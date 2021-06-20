@@ -20,14 +20,10 @@
             background-color: rgba(10, 10, 10, 100);
         }
 
-        .blogs {
-            font-family: Verdana;    
-            color: whitesmoke;
-        }
-
         .post {
             font-family: Verdana;    
             color: whitesmoke;
+            margin-left: 20px;
         }
 
         .rule {
@@ -39,6 +35,8 @@
     <title>Blog - Curtis Smith, P.G.</title>
 
 </head>
+
+<body>
 
 <br>
 <h1 style="text-align: center;font-family: Verdana;font-weight:normal;
@@ -70,11 +68,11 @@ color:whitesmoke;">
 <br>
 
 <h2 class= "post">{{ post.title }} </h2>
-<small class = "post">By: {{ post.author.first_name }}
+<p class = "post">By: {{ post.author.first_name }}
     {{ post.author.last_name }}
     <br>
     {{ post.date }} CST
-</small><br>
+</p>
 <hr class = "rule">
 <br>
 <div class = "post">
