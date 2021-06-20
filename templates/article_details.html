@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    {% load static %}
+
+    <style>
+        .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
+            font-size: smaller;
+            font-family: Verdana;
+        }
+
+        body {
+            background-color: rgba(10, 10, 10, 100);
+        }
+
+        .blogs {
+            font-family: Verdana;    
+            color: whitesmoke;
+        }
+
+        .post {
+            font-family: Verdana;    
+            color: whitesmoke;
+        }
+
+        .rule {
+            border-top: 1px solid whitesmoke ;
+        }
+        
+    </style>
+
+    <title>Blog - Curtis Smith, P.G.</title>
+
+</head>
+
+<br>
+<h1 style="text-align: center;font-family: Verdana;font-weight:normal;
+color:whitesmoke;">
+    CURTIS SMITH, P.G.
+</h1>
+
+<!-- Grey with black text -->
+<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/blog">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/scratch">Scratch</a>
+      </li>
+    </ul>
+</nav>
+
+<br>
+
+<h2 class= "post">{{ post.title }} </h2>
+<small class = "post">By: {{ post.author.first_name }}
+    {{ post.author.last_name }}
+    <br>
+    {{ post.date }} CST
+</small><br>
+<hr class = "rule">
+<br>
+<div class = "post">
+{{ post.body }}
+</div>
+
+</body>
+</html>

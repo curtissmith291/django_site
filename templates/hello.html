@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body{
+            background-color: rgba(10, 10, 10, 100);
+        }
+
+        p {
+            font-family: Verdana;
+            color: whitesmoke;
+        }
+    </style>
+
+</head>   
+<body>
+    
+
+<!-- Grey with black text -->
+<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/scratch">Scratch</a>
+      </li>
+    </ul>
+</nav>
+
+<p>This simple project requires you to enter your first and last name and it will return with a friendly "hello". </p>
+
+<form method="POST" action="{% url 'hello' %}">{% csrf_token %}
+    <input type="text" name="username" placeholder="First Name">
+    <input type="text" name="lastname" placeholder="Last Name">
+    <input type="submit" name="submit">
+</form>
+
+</body>
+</html>
