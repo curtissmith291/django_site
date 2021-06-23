@@ -1,9 +1,29 @@
-<!-- Complete Address: {{complete_address}} -->
 
-<!-- Your Complete Address is: {{long_address}}
-<br>
-Your Latitude is: {{latitude}}
-<br>
-Your Longitude is: {{longitude}} -->
-<br>
-List of Site: {{site_list}}
+
+
+
+<p>There are {{count}} Superfund Sites within {{distance}} miles from your location.</p>
+
+<div>
+    <ul>
+        {% for site in list_of_sites %}
+            <li>{{ site }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <ul>
+        {% for url in url_list %}
+            <li>
+                <a href="{{url}}">{{url}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <ul>
+        {% for distance in distance_list %}
+            <li>{{ distance }} miles away</li>
+        {% endfor %}
+    </ul>
+</div>

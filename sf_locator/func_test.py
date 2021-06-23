@@ -1,8 +1,7 @@
-from django.shortcuts import render
-# from geopy import distance
 from geopy import Nominatim
 from geopy import distance
 import pandas as pd
+import numpy as np
 
 # State abreviations; EPA API uses abbreviations, address has whole name
 state_abbrev = {'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA',
@@ -24,14 +23,37 @@ def distance_calc(row):
     '''
     address_coords = (lat, long) 
     coord2 = (row['LATITUDE'], row['LONGITUDE'])
-    return distance.distance(address_coords, coord2).miles
+    try:
+        return distance.distance(address_coords, coord2).miles
+    except ValueError:
+        return np.nan
 
 # Create your views here.
 
-def sf_view(request):
-    return render(request, 'sf_locator.html')
+# def sf_view(request):
+#     return render(request, 'sf_locator.html')
 
-def sf_results_view(request):
+# def sf_results_view(request):
+#     try:
+#         street = request.GET['street'].strip()
+#         city = request.GET['city'].strip()
+#         state = request.GET['state'].strip()
+#         zip_code = request.GET['zip_code'].strip()
+
+#         address = street + ", " + city + ", " + state + ", " + zip_code
+
+#         geolocator = Nominatim(user_agent="my_user_agent")
+#         location = geolocator.geocode(address)
+#         long_address = location
+#         lat = location.latitude
+#         long = location.longitude
+#         return render(request, 'sf_locator_results.html', {'long_address': long_address, 'latitude': lat, 
+#             'longitude': long})
+#         # return render(request, 'sf_locator_results.html', {"complete_address": address})
+#     except:
+#         return render(request, 'sf_locator.html')
+
+def sf_results_view():
     
     # sets the distacne to check to sites
     dist = 50
@@ -39,10 +61,10 @@ def sf_results_view(request):
     global long
 
     try:
-        street = request.GET['street'].strip()
-        city = request.GET['city'].strip()
-        state = request.GET['state'].strip()
-        zip_code = request.GET['zip_code'].strip()
+        street = "2340 Hurley Way"
+        city = "Sacramento"
+        state = "California"
+        zip_code = "95825"
 
         # Combines address parts into variable readable by geopy
         address = street + ", " + city + ", " + state + ", " + zip_code
@@ -50,10 +72,11 @@ def sf_results_view(request):
         # Gets lat and long from input address
         geolocator = Nominatim(user_agent="my_user_agent")
         location = geolocator.geocode(address)
+        long_address = location
         lat = location.latitude
         long = location.longitude
 
-        # converts long-form state to state abbreviation
+        # converts long-from state to state abbreviation
         if state in state_abbrev.keys():
             state = state_abbrev[state]
 
@@ -68,6 +91,7 @@ def sf_results_view(request):
         sf_sites_temp = sf_df.copy()
         sf_sites_temp['SITE_DISTANCE'] = sf_df.apply(distance_calc, axis=1)
         sf_df = sf_sites_temp.copy()
+        print(sf_df.head())
 
         # Creates new DataFrame with Superfund Sites within the specified distance from the address
         sf_sites_near = sf_df.loc[(sf_df['SITE_DISTANCE'] <= dist)]
@@ -75,26 +99,15 @@ def sf_results_view(request):
 
         # Adds sites within distance to a list
         site_list = sf_sites_near.loc[:, 'SITE_NAME'].tolist()
-        # Adds URLs to list
-        url_list = sf_sites_near.loc[:, 'SITE_URL'].tolist()
-        # Adds distances to list; rounds to 1 decimal place
-        distance_list = round(sf_sites_near.loc[:, 'SITE_DISTANCE'], 1).tolist()
-        print(url_list)
-        # Adjusts urls to be readable by html
-        # link_class = 'sf_links'
-        # for url in url_list:
-        #     url_links = 'class="{}" href="{}">'.format(link_class, url)
+        print(site_list)
+        return site_list
 
-
-        # Count of items sites
-        count = len(site_list)
-
-        context = {"list_of_sites": site_list, "count": count, "distance":dist, "url_list": url_list,
-            "distance_list": distance_list}
-
-        return render(request, 'sf_locator_results.html', context)
-
+        # return render(request, 'sf_locator_results.html', {'long_address': long_address, 'latitude': lat, 
+        #     'longitude': long})
+        # return render(request, 'sf_locator_results.html', {"complete_address": address})
     except NameError as e:
         print(e)
         # make new html page for requests that don't work?
-        return render(request, 'sf_locator.html')
+        return (print(e))
+
+sf_results_view()
