@@ -31,6 +31,12 @@
             line-height: 40px;
         }
 
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .links{
             text-align: center;
             font-family: Verdana;
@@ -38,16 +44,6 @@
             opacity: 0.8;
         }
 
-        .link:link{
-          color: lightblue
-        }
-        .link:visited{
-          color: lightblue
-        }
-        .link:hover{
-          text-decoration: underline;
-          
-        }
         .main_body{
             text-align: center;
             font-family: Verdana;
@@ -55,25 +51,22 @@
             opacity: 0.8;
         }
 
-        .text{
-          font-family: Verdana;
-          color: whitesmoke;
-          opacity: 0.8;
-          margin-left: 10px;
+        .button{  
+            background-color:white;
+            color: black;
         }
 
-        .smalls{
-          font-family: Verdana;
-          color: whitesmoke;
-          opacity: 0.8;
-          margin-left: 10px;
-          line-height: 0.5;
+        .input_field{
+            font-family: Verdana;
+            color: black;
         }
 
-        hr {
-          border: 0.5px solid whitesmoke;
-          opacity: 0.8;
+        .center{
+            display: flex;
+            align-items: center;
+            justify-content: center; 
         }
+
     </style>
     
     <title>Projects - Curtis Smith, P.G.</title>
@@ -108,30 +101,21 @@ color:whitesmoke;">
       </li>
     </ul>
 </nav>
-
 <br>
- <p class = "main_body">
-    This page is a list of my projects. Projects are listed in reverse chronological order. Notes about the projects are included in each link. 
- </p>
- <br>
+<div class='container'>
+    <form  action="add_result">
+        <label class="main_body" for="first"> Enter 1st Number : </label>
+        <input class="input_field" type="number" id="first" name = "num1" required><br>
+        <label class="main_body" for="second"> Enter 2nd Number :  </label>
+        <input class="input_field" type="number" id="second" name = "num2" required><br>
 
- <div>
-  <p class="text">This link is to a webpage that adds two input integers.</p>
-  <li>
-      <a class="link" href="/add">Adding Numbers.</a>
+        <input class="button" type="submit" name="Click Me">
+    </form>
 </div>
-<hr>
- <div>
-  <p class="text">This link is to a simple webpage that squares the integer you input.</p>
-  <li>
-      <a class="link" href="/square">Number Squared.</a>
-</div>
-<hr>
- <div>
-    <p class="text"> This link is to a simple webpage that returns your username with a friendly "Hello".</p>
-    <li>
-        <a class="link" href="/hello">Hello, User</a>
-</div>
+<br>
+<p class="main_body">
+    Notes about this project: this is my first project were the results are dynamically displayed in a new webpage. 
+</p>
 
 </body>
 </html>

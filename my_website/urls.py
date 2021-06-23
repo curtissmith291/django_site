@@ -17,7 +17,8 @@ from theblog.views import BlogView, ArticleDetailView
 # from theblog.views import blog_view
 from django.contrib import admin
 from django.urls import path
-from pages.views import home_view, scratch_view, about_view, projects_view, square_view, hello_form
+from pages.views import add_result_view, add_view, home_view, scratch_view, about_view, projects_view, square_view, hello_form
+add_result_view
 
 # Note: the "name" attribute is how the url is referenced
 urlpatterns = [
@@ -31,5 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', BlogView.as_view(), name='blog'),  # need to call "as_view" since it's a class based view
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article-detail'),
+    path('add/', add_view, name='add'),
+    path('add/add_result/', add_result_view, name='add_result'),
     # path('blog/', blog_view, name='blog'),
 ]

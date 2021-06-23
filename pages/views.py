@@ -51,3 +51,12 @@ def hello_form(request):
             return HttpResponse(f'Hello {user} {last}, thanks for visiting my website :)')
 
     return render(request, "hello.html")
+
+def add_view(request):
+    return render(request, 'add.html')    
+
+def add_result_view(request):
+    val1 = request.GET['num1']
+    val2 = request.GET['num2']
+    res = int(val1) + int(val2)
+    return render(request, 'add_result.html', {'result': res})
