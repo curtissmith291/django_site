@@ -19,7 +19,11 @@
         body{
             background-color: rgba(10, 10, 10, 100);
           }
-
+        .container{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
         .thumb {
             width: 35px; 
             float: left;
@@ -59,7 +63,6 @@
           font-family: Verdana;
           color: whitesmoke;
           opacity: 0.8;
-          margin-left: 10px;
         }
 
         .smalls{
@@ -115,22 +118,43 @@ color:whitesmoke;">
  </p>
  <br>
 
- <div>
-  <p class="text">This link is to a webpage that adds two input integers.</p>
-  <li>
-      <a class="link" href="/add">Adding Numbers.</a>
-</div>
-<hr>
- <div>
-  <p class="text">This link is to a simple webpage that squares the integer you input.</p>
-  <li>
-      <a class="link" href="/square">Number Squared.</a>
-</div>
-<hr>
- <div>
-    <p class="text"> This link is to a simple webpage that returns your username with a friendly "Hello".</p>
+<ul style="list-style: none;">
+    <p class="text">This link project that returns a list of EPA Superfind Sites within 50 miles of the 
+      input address.</p>
     <li>
-        <a class="link" href="/hello">Hello, User</a>
+        <a class="link" href="/sf_locator">Superfund Site Locator</a>
+  <hr>
+
+    <p class="text">This link is to a webpage that adds two input integers.</p>
+    <li>
+        <a class="link" href="/add">Adding Numbers</a>
+
+  <hr>
+
+    <p class="text">This link is to a simple webpage that squares the integer you input.</p>
+    <li>
+        <a class="link" href="/square">Number Squared</a>
+
+  <hr>
+
+      <p class="text"> This link is to a simple webpage that returns your username with a friendly "Hello".</p>
+      <li>
+          <a class="link" href="/hello">Hello, User</a>
+</ul>
+
+<br>
+
+<p class="links">Links</p>
+
+<div class='container'>
+    <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
+        <img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
+        title="linkedin">
+     </a>
+    <a href="https://github.com/curtissmith291">
+        <img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
+        title="github">
+    </a>
 </div>
 
 </body>

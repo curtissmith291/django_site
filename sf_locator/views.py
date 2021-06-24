@@ -61,7 +61,7 @@ def sf_results_view(request):
         sf_df = pd.read_csv('resources/sf_sites_cleaned.csv')
 
         # Reduces df to only states matching user input
-        sf_df = sf_df[sf_df["SITE_STATE"] == state]
+        # sf_df = sf_df[sf_df["SITE_STATE"] == state]
 
         # Creates a new column with the distance in miles between the address and Superfund Sites
         # adding temp Dataframe prevents false positive SettingWithCopyWarning
@@ -80,17 +80,26 @@ def sf_results_view(request):
         # Adds distances to list; rounds to 1 decimal place
         distance_list = round(sf_sites_near.loc[:, 'SITE_DISTANCE'], 1).tolist()
         print(url_list)
-        # Adjusts urls to be readable by html
-        # link_class = 'sf_links'
-        # for url in url_list:
-        #     url_links = 'class="{}" href="{}">'.format(link_class, url)
+
+        # Add items to list of dictionaries for loop through in sf_locator_results.html
+        # list structure --> list = [{site_name:site1, site_url:url1, site_distance:distance1}]
+        list_of_dicts = []  # Initialized empty list of dictionaries that will be sent to sf_locator_results.html
+        list_of_keys = ['site_name','site_url', 'site_distance']    # Keys for list_of_dicts
+        for index in range(len(site_list)): # Loops through lists from above
+            temp_list = []                  # Resets the temp list every iteration
+            temp_dict = {}                  # Resets the temp dictionary every iteration
+            temp_list.append(site_list[index])
+            temp_list.append(url_list[index])
+            temp_list.append(distance_list[index])
+            temp_dict = dict(zip(list_of_keys, temp_list))
+            list_of_dicts.append(temp_dict)
 
 
         # Count of items sites
         count = len(site_list)
 
         context = {"list_of_sites": site_list, "count": count, "distance":dist, "url_list": url_list,
-            "distance_list": distance_list}
+            "distance_list": distance_list, "list_of_dicts": list_of_dicts}
 
         return render(request, 'sf_locator_results.html', context)
 
