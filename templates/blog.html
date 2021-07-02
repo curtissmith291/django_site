@@ -65,6 +65,7 @@
         .text{
             text-align: left;
             margin-left: 10px;
+            margin-right: 10px;
             font-family: 'Nunito', sans-serif;
             color: whitesmoke;
         } 
@@ -108,7 +109,7 @@
 
     <br>
 
-    <h2 class = "text">
+    <h3 class = "text">
         Blog Posts
     </h3>
 
@@ -118,9 +119,29 @@
             <small class = "text">
                 {{ post.date }}
             </small>
+
         </li>
     {% endfor %}
     </ul>
+
+    <hr>
+
+    <p class="blurb">Other places you can find me:</p>
+  
+    <div class='container'>
+      <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
+          <img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
+          title="linkedin">
+      </a>
+      <a href="https://github.com/curtissmith291">
+          <img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
+          title="github">
+      </a>
+    </div>
+  
+    <br>
+  
+    <p class="blurb">curtis.smith.geo@gmail.com</p>
 
 </body>
 </html>
