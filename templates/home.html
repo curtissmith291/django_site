@@ -8,44 +8,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+
     {% load static %}
 
     <style>
         .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
-            font-size: smaller;
-            font-family: Verdana;
+            /* font-size: smaller; */
+            font-family: 'Nunito', sans-serif;
         }
-
         body {
-            background-color: rgba(10, 10, 10, 100);
+            background-color: rgb(59, 59, 65);
         }
-
         .thumb {
             width: 35px; 
             float: left;
             margin-left: 10px;
+            align-items: center;
         }  
-
-        .test{
-            line-height: 40px;
-        }
-
         .container{
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .links{
             text-align: center;
-            font-family: Verdana;
+            font-family: 'Nunito', sans-serif;
             color: whitesmoke;
-            opacity: 0.8;
+            opacity: 1;
         }
         .blurb {
             text-align: center;
             color: whitesmoke;
-            font-family: Verdana;
+            font-family: 'Nunito', sans-serif;
         }
         .headshot {
             width: 250px;
@@ -57,6 +58,11 @@
         .headshot_section {
             background-color: rgba(194, 108, 130, 0.1);
         }
+        hr {
+            background-color: whitesmoke;
+            opacity: 0.7;
+        }
+
     </style>
     
     <title>Home - Curtis Smith, P.G.</title>
@@ -65,57 +71,85 @@
 
 <body>    
 
-<br>
-<h1 style="text-align: center;font-family: Verdana;font-weight:normal;
-color:whitesmoke;">
-    CURTIS SMITH, P.G.
-</h1>
-
-<!-- Grey with black text -->
-<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/blog">Blog</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/projects">Projects</a>
-    </ul>
-</nav>
-
-<p class="headshot_section">
     <br>
-    <img class="headshot" 
-    src="{% static 'images/sandia.jpg' %}" 
-    alt="booooo" 
-    title="Sandia Mountains, New Mexico">
+
+    <h1 style="text-align: center;font-family: 'Nunito', sans-serif;font-weight:normal;
+    color:whitesmoke;">
+        CURTIS SMITH, P.G.
+    </h1>
+
+    <div>
+        <nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/projects">Projects</a>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="headshot_section">
+        <br>
+        <img class="headshot" 
+        src="{% static 'images/sandia.jpg' %}" 
+        alt="Uh oh, a picture is supposed to be here. The issue is probably on your end..." 
+        title="Sandia Mountains, New Mexico">
+        <br>
+    </div>
+
     <br>
-</p>
 
-<br>
+    <div class='container'>
+        <p class="blurb">
+        Hi, welcome to my webpage. Take a look at my personal projects, read about my background, or sift through my blog where I talk about creating this website from scratch and my experiences in a data analytics bootcamp.
 
-<p class="blurb">
-Here is where I will write things and stuff 
+        </p>
+    </div>
 
-</p>
 
-<p class="links">Links</p>
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col">
+                <img class="headshot" 
+                src="{% static 'images/sandia.jpg' %}" 
+                alt="Uh oh, a picture is supposed to be here. The issue is probably on your end..." 
+                title="Sandia Mountains, New Mexico">
+            </div>
+            <div class="col">
+                <p class="blurb">
+                    Hi, welcome to my webpage. Take a look at my personal projects, read about my background, or sift through my blog where I talk about creating this website from scratch and my experiences in a data analytics bootcamp.
+            
+                </p>
+        </div>
+    </div>     -->
 
-<div class='container'>
-    <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
-        <img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
-        title="linkedin">
-     </a>
-    <a href="https://github.com/curtissmith291">
-        <img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
-        title="github">
-    </a>
-</div>
+
+    <hr>
+
+    <p class="blurb">Other places you can find me:</p>
+
+    <div class='container'>
+        <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
+            <img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
+            title="linkedin">
+        </a>
+        <a href="https://github.com/curtissmith291">
+            <img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
+            title="github">
+        </a>
+    </div>
+
+    <br>
+
+    <p class="blurb">curtis.smith.geo@gmail.com</p>
 
 </body>
 </html>
