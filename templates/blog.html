@@ -3,91 +3,124 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+
     {% load static %}
 
     <style>
-        .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
-            font-size: smaller;
-            font-family: Verdana;
+        .blurb {
+            text-align: center;
+            color: whitesmoke;
+            font-family: 'Nunito', sans-serif;
         }
-
         body {
-            background-color: rgba(10, 10, 10, 100);
+            background-color: rgb(59, 59, 65);
         }
-
-        .blog_header {
-            font-family: Verdana;    
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header_main {
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            font-weight: normal;
             color: whitesmoke;
-            margin-left: 20px;
-            opacity: 0.9;
         }
-
-        .blogs {
-            font-family: Verdana;    
+        .headshot {
+            width: 250px;
+            border-radius: 125px; 
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .headshot_section {
+            background-color: rgba(194, 108, 130, 0.1);
+        }
+        hr {
+            background-color: whitesmoke;
+            opacity: 0.7;
+        }
+        .links{
+            text-align: left;
+            font-family: 'Nunito', sans-serif;
             color: whitesmoke;
-            opacity: 0.9; 
+            opacity: 1;
         }
-
-
-        .list {
-            list-style-type: none;
+        .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
+            /* font-size: smaller; */
+            font-family: 'Nunito', sans-serif;
         }
-
-        .blog_link {
+        .text{
+            text-align: left;
+            margin-left: 10px;
+            font-family: 'Nunito', sans-serif;
             color: whitesmoke;
-            opacity: 0.9;
-        }
+        } 
+        .thumb {
+            width: 35px; 
+            float: left;
+            margin-left: 10px;
+            align-items: center;
+        }  
     </style>
-
+    
     <title>Blog - Curtis Smith, P.G.</title>
 
 </head>
 
-<br>
-<h1 style="text-align: center;font-family: Verdana;font-weight:normal;
-color:whitesmoke;">
-    CURTIS SMITH, P.G.
-</h1>
+<body>    
 
-<!-- Grey with black text -->
-<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/blog">Blog</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/projects">Projects</a>
-      </li>
+    <br>
+
+    <h1 class="header_main">
+        CURTIS SMITH, P.G.
+    </h1>
+
+    <div>
+        <nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/projects">Projects</a>
+            </ul>
+        </nav>
+    </div>
+
+    <br>
+
+    <h2 class = "text">
+        Blog Posts
+    </h3>
+
+    <ul style="list-style: none;">
+    {% for post in object_list %}
+        <li class = "links"><a href="{% url 'article-detail' post.pk %}">{{ post.title }} </a>- 
+            <small class = "text">
+                {{ post.date }}
+            </small>
+        </li>
+    {% endfor %}
     </ul>
-</nav>
-
-<br>
-
-<h2 class = "blog_header">
-    Blog Posts
-</h3>
-<br>
-
-<ul class = "list">
-{% for post in object_list %}
-    <li class = "blog_link"><a href="{% url 'article-detail' post.pk %}">{{ post.title }} </a>- 
-        <small class = "blogs">
-            {{ post.date }}
-        </small>
-    </li>
-{% endfor %}
-</ul>
 
 </body>
 </html>
