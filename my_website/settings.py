@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     # my apps
     'pages',
     'theblog',
-    'sf_locator'
+    'sf_locator',
+    'chord_detector'
 
     
 ]

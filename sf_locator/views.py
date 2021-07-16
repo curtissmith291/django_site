@@ -33,7 +33,7 @@ def sf_view(request):
 
 def sf_results_view(request):
     
-    # sets the distacne to check to sites
+    # sets the distance to check to sites
     dist = 50
     global lat
     global long
