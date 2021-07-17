@@ -35,7 +35,7 @@ def note_value(string, fret):
     return note
 
 
-# # Checks input for empty (muted) strings, assigns them '--', assigns notes to input values
+# Checks input for empty (muted) strings, assigns them '--', assigns notes to input values
 def note_converter(list_to_check):
     '''
     This funtion iterates through input fret values and assigns note to numerical inputs and '--' to muted strings
@@ -50,13 +50,7 @@ def note_converter(list_to_check):
         except:
             inputs_fret_values.append("--")
             string_count += 1
-    # if inputs_fret_values == ['--', '--', '--', '--', '--', '--']:
-    #     list_of_input_notes = "NA"
-    #     root = "NA"
-    #     statement = "need to enter at least one fret"
-    #     context = {"result": statement}
-    #     return render(request, 'chords_results.html', context)
-    # else:
+
     list_of_input_notes = [x for x in inputs_fret_values if x != "--"]
     root = list_of_input_notes[0]
     return inputs_fret_values, list_of_input_notes, root
@@ -227,7 +221,7 @@ def chord_result_view(request):
             chord_list = [major_chord, minor_chord, augmented_chord, diminished_chord, fifth_chord, suspended4_chord, suspended2_chord, major_sixth_chord, minor_sixth_chord, 
                 dominant_seventh_chord, major_seventh_chord, minor_seventh_chord, minor_major_seventh_chords, augmented_seventh_chords, diminished_seventh_chords, 
                 half_diminished_seventh_chords]
-            chord_strings = "Major, Minor, Augmented, Diminished, 5/Power, sus4, sus2, 6, m6, 7, maj7, m7, m(maj)7, 7(#5) (minor-major seventh), dim7, m7(b5) (half-diminished seventh)"
+            chord_strings = "Major, Minor, Augmented, Diminished, 5/Power, sus4, sus2, 6, m6, 7 (dominant), maj7, m7, m(maj7) (minor-major), 7(#5) (augmented), dim7, m7(b5) (half-diminished seventh)"
             chord_strings = chord_strings.split(", ")
             chord_dictionary = dict(zip(chord_strings, chord_list))
 
@@ -249,10 +243,6 @@ def chord_result_view(request):
                         }
 
             return render(request, 'chords_results.html', context)
-
-        # context = {"result": note_list}
-        # return render(request, 'chords_results.html', context)
-
 
     except:
 

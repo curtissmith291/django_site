@@ -4,34 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+
+    <title>Chord Results</title>
 
     {% load static %}
 
+    <!-- Standard style between all webpages -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <!-- Styles Unique to this webpage -->
+    <style>
+
+    </style>
+
 </head>
 <body>
-    
-    <p>
-        Your Chord: {{result}}
-    </p>
-    <p>
-        Your Input Notes: {{input_notes}}
-    </p>
-    <p>
-        Your Root Note: {{root_note}}
-    </p>
-    <p>
-        Chord Structures for Your Root Note:
-        <ul style="list-style: none;">
 
-            {% for dict in list_of_dictionaries %}
-                <li class="text">{{root_note}} {{dict.chord_type}} Chord -- {{dict.notes}}</li>
-            <br>
+    <br>
+
+	<h1 class="cs_header">
+		CURTIS SMITH, P.G.
+	</h1>
+
+	<div class="just_font">
+		<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/about">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/blog">Blog</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/projects">Projects</a>
+			</ul>
+		</nav>
+	</div>
+
+	<br>
+
+
+    <div class="left_text">
+        <p>
+            Your Chord: {{result}}
+        </p>
+        <p>
+            Your Input Notes for Each String: 
+            <!-- iterating through list to get rid of quotes -->
+            {% for note in input_notes %}
+                {{note}},
             {% endfor %}
-    
-        </ul>
-    </p>
-
+        </p>
+        <p>
+            Your Root Note: {{root_note}}
+        </p>
+        <p>
+            Chord Structures for Your Root Note:
+            <ul style="list-style: none;">
+                {% for dict in list_of_dictionaries %}
+                    <li class="text">{{root_note}} {{dict.chord_type}} Chord -- 
+                    <!-- iterating through list to get rid of quotes -->
+                    <!-- i.e. "C, F, G" instead of "['C', 'E', 'G']" -->
+                    {% for item in dict.notes %}
+                        {{item}},
+                    {% endfor %}
+                    </li>
+                {% endfor %}
+        
+            </ul>
+        </p>
+    </div>
     <a href="/chords">
         <button>
             Back to Input
