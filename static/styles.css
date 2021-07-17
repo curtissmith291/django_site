@@ -1,0 +1,52 @@
+body {
+    background-color: rgb(59, 59, 65);
+}
+
+.centered_items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.centered_text {
+    text-align: center;
+    color: whitesmoke;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Website Top Header */
+/* "Curtis Smith, P.G. */
+.cs_header {
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: normal;
+    color: whitesmoke;
+}
+
+/* Horizontal rule above "other places" footer */
+.footer_hr {
+    background-color: whitesmoke;
+    opacity: 0.7;
+}
+
+.just_font {
+    font-family: 'Nunito', sans-serif;
+    color: whitesmoke;
+}
+
+.left_text {
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Nunito', sans-serif;
+    color: whitesmoke;
+}
+
+/* Thumbnail images for LI and GH links */
+.thumb {
+    width: 35px; 
+    float: left;
+    margin-left: 10px;
+    align-items: center;
+}  

@@ -20,6 +20,7 @@ from django.urls import path
 from pages.views import add_result_view, add_view, home_view, scratch_view, about_view, projects_view, square_view, hello_form
 add_result_view
 from sf_locator.views import sf_view, sf_results_view
+from chord_detector.views import chord_view, chord_result_view
 
 # Note: the "name" attribute is how the url is referenced
 urlpatterns = [
@@ -37,5 +38,7 @@ urlpatterns = [
     path('add/add_result/', add_result_view, name='add_result'),
     path('sf_locator/', sf_view, name="sf_locator"),
     path('sf_locator/sf_locator_results', sf_results_view, name="sf_locator_results"),
+    path('chords/', chord_view, name='chords'),
+    path('chords/chords_results', chord_result_view, name='chords_results')
     # path('blog/', blog_view, name='blog'),
 ]

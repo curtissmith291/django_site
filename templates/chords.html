@@ -1,33 +1,169 @@
 <head></head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+
+
+    <style>
+        .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
+            font-family: 'Nunito', sans-serif;
+        }
+        .blurb {
+          text-align: center;
+          margin-left: 10px;
+          margin-right: 10px;
+          color: whitesmoke;
+          font-family: 'Nunito', sans-serif;
+        } 
+        body {
+            background-color: rgb(59, 59, 65);
+        }
+        .container{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .descritpion_text{
+          font-family: Verdana;
+          color: whitesmoke;
+          opacity: 1;
+          margin-left: 10px;
+        }
+        .fret_input{
+            width:60px
+        }
+        .header_main {
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            font-weight: normal;
+            color: whitesmoke;
+        }
+        .thumb {
+            width: 35px; 
+            float: left;
+            margin-left: 10px;
+        }  
+        .test{
+            line-height: 40px;
+        }
+        .links{
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            color: whitesmoke;
+            opacity: 0.8;
+        }
+        .link:link{
+          color: lightblue
+        }
+        .link:visited{
+          color: lightblue
+        }
+        .link:hover{
+          text-decoration: underline;
+          
+        }
+        .main_body{
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            color: whitesmoke;
+            opacity: 0.8;
+        }
+        .text{
+            text-align: left;
+            margin-right: 10px;
+            font-family: 'Nunito', sans-serif;
+            color: whitesmoke;
+        } 
+        .smalls{
+          font-family: 'Nunito', sans-serif;
+          color: whitesmoke;
+          opacity: 0.8;
+          margin-left: 10px;
+          line-height: 0.5;
+        }
+
+        hr.full_length {
+          border: 0.5px solid whitesmoke;
+          opacity: 0.7;
+        }
+        hr.short_length {
+          border: 0.5px solid whitesmoke;
+          opacity: 0.7;
+          margin-right: 10px;
+        }
+    </style>
 
 
 <body>
     
+    <br>
 
-    <div class="container">
-        <form  action="sf_locator_results">
+	<h1 class="header_main">
+			CURTIS SMITH, P.G.
+	</h1>
+
+	<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/home">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/about">About</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/blog">Blog</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="/projects">Projects</a>
+			</li>
+		</ul>
+	</nav>
+
+    <div class="descritpion_text">
+        <label class="descritpion_text" for="bleh">
+            Input the fret numbers for each string. If the frets are muted or not played, leave the input field blank. 
+        </label>
+        <form  action="chords_results" id="bleh">
             <label class="text" for="E"> E : </label>
-            <input type="number" id="E" name = "E" size ="4" min="0" step="1"><br>
+            <input class="fret_input" type="number" id="E" name = "E" min="0" step="1"><br>
 
             <label class="text" for="A"> A :  </label>
-            <input type="number" id="A" name = "A" size ="4" min="0" step="1"><br>
+            <input class="fret_input" type="number" id="A" name = "A"  min="0" step="1"><br>
 
             <label class="text" for="D"> D : </label>
-            <input type="number" id="D" name = "D" size ="4" min="0" step="1"><br>
+            <input class="fret_input" type="number" id="D" name = "D"  min="0" step="1"><br>
 
             <label class="text" for="G"> G :  </label>
-            <input type="number" id="G" name = "G" size ="4" min="0" step="1"><br>
+            <input class="fret_input" type="number" id="G" name = "G"  min="0" step="1"><br>
 
             <label class="text" for="B"> B :  </label>
-            <input type="number" id="B" name = "B" size ="4" min="0" step="1"><br>
+            <input  class="fret_input" type="number" id="B" name = "B" min="0" step="1"><br>
 
             <label class="text" for="e"> e :  </label>
-            <input type="number" id="e" name = "e" size ="4" min="0" step="1"><br>
+            <input  class="fret_input" type="number" id="e" name = "e" min="0" step="1"><br>
 
             <input type="submit" name="Click Me">
         </form>
     </div>
+
+    <br>
+
+    <h3 class='descritpion_text'>
+        Project Description
+    </h3>
+    <p class='descritpion_text'>
+        This project...
+    </p>
 
 </body>

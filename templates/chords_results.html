@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+
+</head>
+<body>
+    
+    <p>
+        Your Chord: {{result}}
+    </p>
+    <p>
+        Your Input Notes: {{input_notes}}
+    </p>
+    <p>
+        Your Root Note: {{root_note}}
+    </p>
+    <p>
+        Chord Structures for Your Root Note:
+        <ul style="list-style: none;">
+
+            {% for dict in list_of_dictionaries %}
+                <li class="text">{{root_note}} {{dict.chord_type}} Chord -- {{dict.notes}}</li>
+            <br>
+            {% endfor %}
+    
+        </ul>
+    </p>
+
+    <a href="/chords">
+        <button>
+            Back to Input
+        </button>
+    </a>
+
+</body>
+</html>

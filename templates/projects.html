@@ -16,39 +16,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
 
-    {% load static %}
+	{% load static %}
+
+    <!-- Standard style between all webpages -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <!-- Styles Unique to this webpage -->
 
     <style>
-        .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
-            font-family: 'Nunito', sans-serif;
-        }
-        .blurb {
-          text-align: center;
-          margin-left: 10px;
-          margin-right: 10px;
-          color: whitesmoke;
-          font-family: 'Nunito', sans-serif;
-        } 
-        body {
-            background-color: rgb(59, 59, 65);
-        }
-        .container{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .header_main {
-            text-align: center;
-            font-family: 'Nunito', sans-serif;
-            font-weight: normal;
-            color: whitesmoke;
-        }
-        .thumb {
-            width: 35px; 
-            float: left;
-            margin-left: 10px;
-            
-        }  
+
+ 
         .test{
             line-height: 40px;
         }
@@ -89,10 +66,6 @@
           line-height: 0.5;
         }
 
-        hr.full_length {
-          border: 0.5px solid whitesmoke;
-          opacity: 0.7;
-        }
         hr.short_length {
           border: 0.5px solid whitesmoke;
           opacity: 0.7;
@@ -107,80 +80,88 @@
 
 <body>
 
+  	<br>
+
+	<h1 class="cs_header">
+			CURTIS SMITH, P.G.
+	</h1>
+
+  	<div class="just_font">
+		<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/about">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/blog">Blog</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/projects">Projects</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
   <br>
 
-  <h1 class="header_main">
-      CURTIS SMITH, P.G.
-  </h1>
+	<p class = "centered_text">
+			This page is a list of my projects. Projects are listed in reverse chronological order. 
+			Notes about the projects are included in each link. 
+	</p>
 
-  <!-- Grey with black text -->
-  <nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/blog">Blog</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/projects">Projects</a>
-        </li>
-      </ul>
-  </nav>
+	<br>
 
-  <br>
+  	<ul style="list-style: none;">
+		<hr class="short_length">
+		<li><a class="link" href="/chords">Guitar Chord Finder</a></li>
+      	<p class="text">
+			For this project, the user inputs the frets for each string of a guitar, and the chord, if any, 
+        	being played will be returned, along with the chord structures for the root note entered. 
+      	</p>
+      	<hr class="short_length">
 
-  <p class = "blurb">
-      This page is a list of my projects. Projects are listed in reverse chronological order. Notes about the projects are included in each link. 
-  </p>
+		<li><a class="link" href="/sf_locator">Superfund Site Locator</a></li>
+      	<p class="text">
+		  	This project returns a list of EPA Superfind Sites within 50 miles of the 
+        	input address.</p>
+		<hr class="short_length">
 
-  <br>
+		<li><a class="link" href="/add">Adding Numbers</a></li>
+      	<p class="text">
+			This link is to a webpage that adds two input integers.</p>
+    	<hr class="short_length">
 
-  <ul style="list-style: none;">
-      <p class="text">This project returns a list of EPA Superfind Sites within 50 miles of the 
-        input address.</p>
-      <li>
-          <a class="link" href="/sf_locator">Superfund Site Locator</a>
-    <hr class="short_length">
-      <p class="text">This link is to a webpage that adds two input integers.</p>
-      <li>
-          <a class="link" href="/add">Adding Numbers</a>
-    <hr class="short_length">
+		<li><a class="link" href="/square">Number Squared</a></li>
+      	<p class="text">This link is to a simple webpage that squares an integer the user inputs.</p>
+    	<hr class="short_length">
 
-      <p class="text">This link is to a simple webpage that squares an integer the user inputs.</p>
-      <li>
-          <a class="link" href="/square">Number Squared</a>
-    <hr class="short_length">
+		<li><a class="link" href="/hello">Hello, User</a></li>
         <p class="text"> This link is to a simple webpage that returns your username with a friendly "Hello".</p>
-        <li>
-            <a class="link" href="/hello">Hello, User</a>
-  </ul>
+        
+	</ul>
 
-  <br>
+	<br>
 
-  <hr class="full_length">
+	<hr class="footer_hr">
 
-  <hr>
+	<p class="centered_text">Other places you can find me:</p>
 
-  <p class="blurb">Other places you can find me:</p>
+	<div class='centered_items'>
+		<a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
+			<img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
+			title="linkedin">
+		</a>
+		<a href="https://github.com/curtissmith291">
+			<img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
+			title="github">
+		</a>
+	</div>
 
-  <div class='container'>
-    <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
-        <img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
-        title="linkedin">
-    </a>
-    <a href="https://github.com/curtissmith291">
-        <img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
-        title="github">
-    </a>
-  </div>
+	<br>
 
-  <br>
-
-  <p class="blurb">curtis.smith.geo@gmail.com</p>
+	<p class="centered_text">curtis.smith.geo@gmail.com</p>
 
 </body>
 </html>

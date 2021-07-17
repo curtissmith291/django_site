@@ -2,84 +2,32 @@
 <html lang="en-US">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
 
-  {% load static %}
+	{% load static %}
 
-  <style>
-      .blurb {
-        text-align: center;
-        color: whitesmoke;
-        font-family: 'Nunito', sans-serif;
-      }
-      body {
-        background-color: rgb(59, 59, 65);
-      }
-      .container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .header_main {
-        text-align: center;
-        font-family: 'Nunito', sans-serif;
-        font-weight: normal;
-        color: whitesmoke;
-      }
-      .headshot {
-        width: 250px;
-        border-radius: 125px; 
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .headshot_section {
-        background-color: rgba(194, 108, 130, 0.1);
-      }
-      hr {
-        background-color: whitesmoke;
-        opacity: 0.7;
-      }
-      .links{
-        text-align: center;
-        font-family: 'Nunito', sans-serif;
-        color: whitesmoke;
-        opacity: 1;
-      }
-      li {
-        font-family: 'Nunito', sans-serif;
-        color: whitesmoke;
-      }
-      .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
-        font-family: 'Nunito', sans-serif;
-      }
-      .text{
-        text-align: left;
-        margin-left: 10px;
-        font-family: 'Nunito', sans-serif;
-        color: whitesmoke;
-      }
-      .thumb {
-        width: 35px; 
-        float: left;
-        margin-left: 10px;
-        align-items: center;
-      }  
-  </style>
+	<!-- Standard style between all webpages -->
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+	<!-- Styles Unique to this webpage -->
+	<style>
+
+
+  	</style>
   
-  <title>About - Curtis Smith, P.G.</title>
+  	<title>About - Curtis Smith, P.G.</title>
 
 </head>
 
@@ -87,109 +35,110 @@
 
 <br>
 
-  <h1 class="header_main">
-      CURTIS SMITH, P.G.
-  </h1>
+	<h1 class="cs_header">
+		CURTIS SMITH, P.G.
+	</h1>
 
-  <div>
-      <nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link" href="/home">Home</a>
-              </li>
-              <li class="nav-item active">
-                  <a class="nav-link" href="/about">About</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/blog">Blog</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/projects">Projects</a>
-          </ul>
-      </nav>
-  </div>
+	<div class="just_font">
+		<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/home">Home</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/about">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/blog">Blog</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/projects">Projects</a>
+			</ul>
+		</nav>
+	</div>
 
-  <br>
+	<br>
 
-  <p class="blurb">
+  	<p class="centered_text">
     Here is where I will write my about-me. 
 
-  </p>
+	</p>
 
-  <br>
+	<br>
 
-  <div>
-    <h5 class="text">
-      EDUCATION
-    </h3>
-    <ul style="list-style: none;">
-      <li>
-        DATA ANALYTICS BOOTCAMP - UNIVERSITY OF TEXAS 
-        <li>
-          Completed October 2021
-        </li>
-      </li>
-      <br>
-      <li>
-        UNIVERSITY OF OKLAHOMA - Master of Science in Geology
-        <li> Graduated May 2016</li>
-      </li>
-      <br>
-      <li>
-        TEXAS A&M UNIVERSITY - Bachelor of Science in Geology
-        <li>
-          Grauduated May 2014
-        </li>
-      </li>
-    </ul>
-  </div>
+	<div>
+		<h5 class="left_text">
+		EDUCATION
+		</h3>
+		<ul style="list-style: none;" class="just_font">
+			<li>
+				DATA ANALYTICS BOOTCAMP - UNIVERSITY OF TEXAS 
+				<li>
+				Completed October 2021
+				</li>
+			</li>
+			<br>
+			<li>
+				UNIVERSITY OF OKLAHOMA - Master of Science in Geology
+				<li> Graduated May 2016</li>
+			</li>
+			<br>
+			<li>
+				TEXAS A&M UNIVERSITY - Bachelor of Science in Geology
+				<li>
+				Grauduated May 2014
+				</li>
+			</li>
+		</ul>
+	</div>
 
-  <br>
+	<br>
 
-  <div>
-    <h5 class="text">
-      PROFESSIONAL CERTIFICATION
-    </h3>
-    <ul style="list-style: none;">
-      <li>
-        PROFESSIONAL GEOLOGIST - California GEO #9800
+	<div>
+		<h5 class="left_text">
+		PROFESSIONAL CERTIFICATION
+		</h3>
+		<ul class="just_font" style="list-style: none;">
+			<li >
+				PROFESSIONAL GEOLOGIST - California GEO #9800
+			</li>
+		</ul>
+	</div>
 
-      </li>
-  </div>
+	<br>
 
-  <br>
+	<div>
+		<h5 class="left_text">
+		PUBLICATIONS
+		</h3>
+		<ul class="just_font" style="list-style: none;">
+			<li>
+				Scanning Electron Microscope (SEM) Microtextural Analysis as a Paleoclimate Tool for Fluvial Deposits: A Modern Test - GSA Bulletin
+				<li>
+				<a href="https://doi.org/10.1130/B31692.1">https://doi.org/10.1130/B31692.1</a>
+				</li>
+			</li>
+		</ul>
+	</div>
 
-  <div>
-    <h5 class="text">
-      PUBLICATIONS
-    </h3>
-    <ul style="list-style: none;">
-      <li>
-        Scanning Electron Microscope (SEM) Microtextural Analysis as a Paleoclimate Tool for Fluvial Deposits: A Modern Test - GSA Bulletin
-        <li>
-          <a href="https://doi.org/10.1130/B31692.1">https://doi.org/10.1130/B31692.1</a>
-        </li>
-      </li>
-  </div>
+	<hr class="footer_hr">
 
-  <hr>
+	<p class="centered_text">Other places you can find me:</p>
 
-  <p class="blurb">Other places you can find me:</p>
+	<div class='centered_items'>
+		<a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
+			<img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
+			title="linkedin">
+		</a>
+		<a href="https://github.com/curtissmith291">
+			<img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
+			title="github">
+		</a>
+	</div>
 
-  <div class='container'>
-    <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
-        <img class="thumb" alt="linkedin" src="{% static 'images/LI-In-Bug.png' %}"
-        title="linkedin">
-    </a>
-    <a href="https://github.com/curtissmith291">
-        <img class="thumb" alt="github" src="{% static 'images/gh.png' %}"
-        title="github">
-    </a>
-  </div>
+	<br>
 
-  <br>
-
-  <p class="blurb">curtis.smith.geo@gmail.com</p>
+	<p class="centered_text">curtis.smith.geo@gmail.com</p>
 
 </body>
 </html>

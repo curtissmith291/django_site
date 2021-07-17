@@ -43,12 +43,20 @@ def note_converter(list_to_check):
     string_count = 0
     inputs_fret_values = []
     for item in list_to_check:
-        if type(item) is int:
-            inputs_fret_values.append(note_value(string_names[string_count], item))
+        try:
+            x = int(item)
+            inputs_fret_values.append(note_value(string_names[string_count], x))
             string_count += 1
-        else:
+        except:
             inputs_fret_values.append("--")
             string_count += 1
+    # if inputs_fret_values == ['--', '--', '--', '--', '--', '--']:
+    #     list_of_input_notes = "NA"
+    #     root = "NA"
+    #     statement = "need to enter at least one fret"
+    #     context = {"result": statement}
+    #     return render(request, 'chords_results.html', context)
+    # else:
     list_of_input_notes = [x for x in inputs_fret_values if x != "--"]
     root = list_of_input_notes[0]
     return inputs_fret_values, list_of_input_notes, root
@@ -167,11 +175,11 @@ def chord_detector(root, list_of_notes, dictionary_of_chords):
 # Views
 
 # Input View
-def chord_views(request):
+def chord_view(request):
     return render(request, 'chords.html')
 
 # Result View
-def sf_results_view(request):
+def chord_result_view(request):
 
     try:
 
@@ -185,11 +193,15 @@ def sf_results_view(request):
 
         # Combines inputs into list for manipulation
         string_list = [string_low_e, string_a, string_d, string_g, string_b, string_high_e]
+        if string_list == ['', '', '', '', '', '']:
+            result = "You need to enter at least one fret number"
+            context = {"result": result}
+            return render(request, 'chords_results.html', context)
 
         # Checks input for empty (muted) strings, assigns them '--'
         input_notes, note_list, root_note = note_converter(string_list)
 
-        # Creating a dictionary of the degrees based of the user input root note
+        # # Creating a dictionary of the degrees based of the user input root note
         degree_dictionary = degree_calculator(root_note)
 
         # loop to return chord structures based of dictionary
@@ -221,9 +233,26 @@ def sf_results_view(request):
 
             result = chord_detector(root_note, note_list, chord_dictionary)
 
-            context = {"result": result, "chord_structures": chord_dictionary, "degrees": degree_dictionary}
+            # creates a list of dictionaries to loop through for the resutls page
+            # Will be a list of chord types and their notes
+            list_of_dictionaries = []
+            for item in chord_dictionary.items():
+                list_of_dictionaries.append({"chord_type": item[0], "notes": item[1]})
+
+
+            context = { "result": result, 
+                        "chord_structures": chord_dictionary, 
+                        "degrees": degree_dictionary, 
+                        "input_notes": input_notes,
+                        "root_note": root_note,
+                        "list_of_dictionaries": list_of_dictionaries
+                        }
 
             return render(request, 'chords_results.html', context)
+
+        # context = {"result": note_list}
+        # return render(request, 'chords_results.html', context)
+
 
     except:
 
