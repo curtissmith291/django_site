@@ -18,23 +18,12 @@
 
 	{% load static %}
 
-    <!-- Standard style between all webpages -->
+    <!-- Standard styles between all webpages -->
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 
     <!-- Styles Unique to this webpage -->
 
     <style>
-
- 
-        .test{
-            line-height: 40px;
-        }
-        .links{
-            text-align: center;
-            font-family: 'Nunito', sans-serif;
-            color: whitesmoke;
-            opacity: 0.8;
-        }
 
         .link:link{
           color: lightblue
@@ -46,26 +35,15 @@
           text-decoration: underline;
           
         }
-        .main_body{
-            text-align: center;
-            font-family: 'Nunito', sans-serif;
-            color: whitesmoke;
-            opacity: 0.8;
-        }
-        .text{
+		/* For project descriptions */
+        .project_descriptions{
             text-align: left;
             margin-right: 10px;
             font-family: 'Nunito', sans-serif;
             color: whitesmoke;
         } 
-        .smalls{
-          font-family: 'Nunito', sans-serif;
-          color: whitesmoke;
-          opacity: 0.8;
-          margin-left: 10px;
-          line-height: 0.5;
-        }
 
+		/* Horizontal rules between project entries */
         hr.short_length {
           border: 0.5px solid whitesmoke;
           opacity: 0.7;
@@ -116,20 +94,20 @@
   	<ul style="list-style: none;">
 		<hr class="short_length">
 		<li><a class="link" href="/chords">Guitar Chord Finder</a></li>
-      	<p class="text">
+      	<p class="project_descriptions">
 			For this project, the user inputs the frets for each string of a guitar, and the chord name, if any, 
         	entered will be returned, along with the chord structures for the root note entered. 
       	</p>
-		<p class="text">Tags:
+		<p class="project_descriptions">Tags:
 			<span class="badge badge-pill badge-light">Python</span>
 		</p>
       	<hr class="short_length">
 
 		<li><a class="link" href="/sf_locator">Superfund Site Locator</a></li>
-      	<p class="text">
+      	<p class="project_descriptions">
 		  	This project returns a list of EPA Superfind Sites within 50 miles of the 
         	input address.</p>
-		<p class="text">Tags:
+		<p class="project_descriptions">Tags:
 			<span class="badge badge-pill badge-light">Python</span>
 			<span class="badge badge-pill badge-light">Pandas</span>
 			<span class="badge badge-pill badge-light">API</span>
@@ -137,16 +115,16 @@
 		<hr class="short_length">
 
 		<li><a class="link" href="/add">Adding Numbers</a></li>
-      	<p class="text">
+      	<p class="project_descriptions">
 			This link is to a webpage that adds two input integers.</p>
     	<hr class="short_length">
 
 		<li><a class="link" href="/square">Number Squared</a></li>
-      	<p class="text">This link is to a simple webpage that squares an integer the user inputs.</p>
+      	<p class="project_descriptions">This link is to a simple webpage that squares an integer the user inputs.</p>
     	<hr class="short_length">
 
 		<li><a class="link" href="/hello">Hello, User</a></li>
-        <p class="text"> This link is to a simple webpage that returns your username with a friendly "Hello".</p>
+        <p class="project_descriptions"> This link is to a simple webpage that returns your username with a friendly "Hello".</p>
         
 	</ul>
 
