@@ -10,6 +10,11 @@ def home_view(request, *args, **kwargs):
     print(request.user)
     return render(request, "home.html", {})
 
+def home_view_2(request, *args, **kwargs):
+    print(args, kwargs)
+    print(request.user)
+    return render(request, "home_2.html", {})
+
 # scratch page for testing
 def scratch_view(request, *args, **kwargs):
     print(args, kwargs)

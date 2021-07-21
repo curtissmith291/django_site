@@ -17,8 +17,8 @@ from theblog.views import BlogView, ArticleDetailView
 # from theblog.views import blog_view
 from django.contrib import admin
 from django.urls import path
-from pages.views import add_result_view, add_view, home_view, scratch_view, about_view, projects_view, square_view, hello_form
-add_result_view
+from pages.views import add_result_view, add_view, home_view, home_view_2, scratch_view, about_view, projects_view, square_view, hello_form
+add_result_view, home_view_2
 from sf_locator.views import sf_view, sf_results_view
 from chord_detector.views import chord_view, chord_result_view
 
@@ -26,6 +26,7 @@ from chord_detector.views import chord_view, chord_result_view
 urlpatterns = [
     path('', home_view, name = 'home'),          # http://127.0.0.1:8000/ is the same as the home page below
     path('home/', home_view, name = 'home'),     # website home page
+    path('home_2/', home_view_2, name = 'home_2'), 
     path('scratch/', scratch_view, name = 'scratch'),     # to test html
     path('about/', about_view, name = 'about'),
     path('projects/', projects_view, name = 'projects'),

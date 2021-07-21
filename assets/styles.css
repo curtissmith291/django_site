@@ -14,6 +14,8 @@ body {
     text-align: center;
     color: whitesmoke;
     font-family: 'Nunito', sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /* Website Top Header */
@@ -46,7 +48,9 @@ body {
 /* Thumbnail images for LI and GH links */
 .thumb {
     width: 35px; 
-    float: left;
+    /* float: left; */
     margin-left: 10px;
-    align-items: center;
+    margin-right: 10px;
+    /* align-items: center; */
 }  
+
