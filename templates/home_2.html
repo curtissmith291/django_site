@@ -33,324 +33,23 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .headshot_section {
-            background-color: rgba(194, 108, 130, 0.1);
-
-        }
 
         #test {
-            display: flex;
-        }
-        header h1{
-        text-align: center;
-        font-weight: bold;
-        margin-top: 0;
-        }
-        
-        header p{
-        text-align: center;
-        margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hexa{
-        border: 0px;
-        float: left;
-        text-align: center;
-        height: 35px;
-        width: 60px;
-        font-size: 22px;
-        background: #f0f0f0;
-        color: #3c3c3c;
-        position: relative;
-        margin-top: 15px;
+        .test {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body {
+            background-color: #425664;
+            
         }
 
-        .hexa:before{
-        content: ""; 
-        position: absolute; 
-        left: 0; 
-        width: 0; 
-        height: 0;
-        border-bottom: 15px solid #f0f0f0;
-        border-left: 30px solid transparent;
-        border-right: 30px solid transparent;
-        /* top: -15px; */
-        }
-
-        .hexa:after{
-        content: ""; 
-        position: absolute; 
-        left: 0; 
-        width: 0; 
-        height: 0;
-        border-left: 30px solid transparent;
-        border-right: 30px solid transparent;
-        border-top: 15px solid #f0f0f0;
-        bottom: -15px;
-        }
-
-        .timeline {
-        position: relative;
-        padding: 0;
-        width: 100%;
-        margin-top: 20px;
-        list-style-type: none;
-        font-family: 'Nunito', sans-serif;
-        }
-
-        .timeline:before {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        content: ' ';
-        display: block;
-        width: 2px;
-        height: 100%;
-        margin-left: -1px;
-        background: rgb(213,213,213);
-        background: -moz-linear-gradient(top, rgba(213,213,213,0) 0%, rgb(213,213,213) 8%, rgb(213,213,213) 92%, rgba(213,213,213,0) 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)));
-        background: -webkit-linear-gradient(top, rgba(213,213,213,0) 0%, rgb(213,213,213) 8%, rgb(213,213,213) 92%, rgba(213,213,213,0) 100%);
-        background: -o-linear-gradient(top, rgba(213,213,213,0) 0%, rgb(213,213,213) 8%, rgb(213,213,213) 92%, rgba(213,213,213,0) 100%);
-        background: -ms-linear-gradient(top, rgba(213,213,213,0) 0%, rgb(213,213,213) 8%, rgb(213,213,213) 92%, rgba(213,213,213,0) 100%);
-        background: linear-gradient(to bottom, rgba(213,213,213,0) 0%, rgb(213,213,213) 8%, rgb(213,213,213) 92%, rgba(213,213,213,0) 100%);
-        z-index: 5;
-        }
-
-        .timeline li {
-        padding: 2em 0;
-        }
-
-        .timeline .hexa{
-        width: 16px;
-        height: 10px;
-        position: absolute;
-        background: #00c4f3;
-        z-index: 5;
-        left: 0;
-        right: 0;
-        margin-left:auto;
-        margin-right:auto;
-        top: -30px;
-        margin-top: 0;
-        }
-
-        .timeline .hexa:before {
-        border-bottom: 4px solid #00c4f3;
-        border-left-width: 8px;
-        border-right-width: 8px;
-        top: -4px;
-        }
-
-        .timeline .hexa:after {
-        border-left-width: 8px;
-        border-right-width: 8px;
-        border-top: 4px solid #00c4f3;
-        bottom: -4px;
-        }
-
-        .direction-l,
-        .direction-r {
-        float: none;
-        width: 100%;
-        text-align: center;
-        }
-
-        .flag-wrapper {
-        text-align: center;
-        position: relative;
-        }
-
-        .flag {
-        position: relative;
-        display: inline;
-        background: rgb(255,255,255);
-        font-weight: 600;
-        z-index: 15;
-        padding: 6px 10px;
-        text-align: left;
-        border-radius: 5px;
-        }
-
-        .direction-l .flag:after,
-        .direction-r .flag:after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: -15px;
-        height: 0;
-        width: 0;
-        margin-left: -8px;
-        border: solid transparent;
-        border-bottom-color: rgb(255,255,255);
-        border-width: 8px;
-        pointer-events: none;
-        }
-
-        .direction-l .flag {
-        -webkit-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-        -moz-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-        box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-        }
-
-        .direction-r .flag {
-        -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-        -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-        box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-        }
-
-        .time-wrapper {
-        display: block;
-        position: relative;
-        margin: 4px 0 0 0;
-        z-index: 14;
-        line-height: 1em;
-        color: #fff;
-        }
-
-        .direction-l .time-wrapper {
-        float: none;
-        }
-
-        .direction-r .time-wrapper {
-        float: none;
-        }
-
-        .time {
-        background: #00c4f3;
-        display: inline-block;
-        padding: 8px;
-        }
-
-        .desc {
-        position: relative;
-        margin: 1em 0 0 0;
-        padding: 1em;
-        background: whitesmoke;
-        -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
-        -moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
-        box-shadow: 0 0 1px rgba(0,0,0,0.20);
-        z-index: 15;
-        }
-
-        .direction-l .desc,
-        .direction-r .desc {
-        position: relative;
-        margin: 1em 1em 0 1em;
-        padding: 1em;
-        z-index: 15;
-        }
-
-        @media(min-width: 768px){
-        .timeline {
-            width: 660px;
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-
-        .timeline li:after {
-            content: "";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden;
-        }
-        
-        .timeline .hexa {
-            left: -28px;
-            right: auto;
-            top: 8px;
-        }
-
-        .timeline .direction-l .hexa {
-            left: auto;
-            right: -28px;
-        }
-
-        .direction-l {
-            position: relative;
-            width: 310px;
-            float: left;
-            text-align: right;
-        }
-
-        .direction-r {
-            position: relative;
-            width: 310px;
-            float: right;
-            text-align: left;
-        }
-
-        .flag-wrapper {
-            display: inline-block;
-        }
-        
-        .flag {
-            font-size: 14px;
-        }
-
-        .direction-l .flag:after {
-            left: auto;
-            right: -16px;
-            top: 50%;
-            margin-top: -8px;
-            border: solid transparent;
-            border-left-color: rgb(254,254,254);
-            border-width: 8px;
-        }
-
-        .direction-r .flag:after {
-            top: 50%;
-            margin-top: -8px;
-            border: solid transparent;
-            border-right-color: rgb(254,254,254);
-            border-width: 8px;
-            left: -8px;
-        }
-
-        .time-wrapper {
-            display: inline;
-            vertical-align: middle;
-            margin: 0;
-        }
-
-        .direction-l .time-wrapper {
-            float: left;
-        }
-
-        .direction-r .time-wrapper {
-            float: right;
-        }
-
-        .time {
-            padding: 5px 10px;
-        }
-
-        .direction-r .desc {
-            margin: 1em 0 0 0.75em;
-        }
-        }
-
-        @media(min-width: 992px){
-        .timeline {
-            width: 800px;
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-
-        .direction-l {
-            position: relative;
-            width: 380px;
-            float: left;
-            text-align: right;
-        }
-
-        .direction-r {
-            position: relative;
-            width: 380px;
-            float: right;
-            text-align: left;
-        }
+        #background {
+            background-color: #425664;
         }
 
         
@@ -366,7 +65,7 @@
     <br>
 
     <h1 class="cs_header">
-        CURTIS SMITH, P.G.
+        CURTIS S. SMITH, P.G.
     </h1>
     
     <div class="just_font">
@@ -376,34 +75,27 @@
                     <a class="nav-link" href="/home">home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">about</a>
+                    <a class="nav-link" href="/projects">projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/blog">the blog</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/projects">projects</a>
             </ul>
         </nav>
     </div>
 
-    <div class="headshot_section">
-        <br>
-        <img class="headshot" 
-        src="{% static 'images/sandia.jpg' %}" 
-        alt="Uh oh, a picture is supposed to be here. The issue is probably on your end..." 
-        title="Sandia Mountains, New Mexico">
-        <br>
-    </div>
 
     <div class="container">
         <hr class="footer_hr">
     </div>
 
-    <div class="container">
+    <div class="container" id="backgroudn">
         <p class="centered_text">
-        Hi, welcome to my website. Take a look at my personal programming and data-analysis projects, read about my background, or sift through my 
-        blog where I muse about creating this website from scratch using Django and my experiences in a data analytics 
+        Hi, welcome to my website. 
+        <br>
+        <br>
+        Take a look at my programming and data-analysis projects, read about my background below, or sift through my 
+        blog where I muse about creating this website from scratch using Django along with my experiences in a data analytics 
         bootcamp.
         </p>
     </div>
@@ -421,140 +113,71 @@
                     About Me
                 </h5>
                 <p class="just_font">
-                    I'm Professional Geologist currently working my way though the data analytics
+                    I'm a Professional Geologist currently working my way though the data analytics
                     bootcamp through the University of Texas. Prior to starting the bootcamp, I 
-                    worked in environmental consulting as a geologist, primarilty on EPA Superfund Sites. 
-                    
+                    worked in environmental consulting as a geologist, primarily on characterization and 
+                    remediation of EPA Superfund Sites. 
+                    <br>
+                    <br>
+                    My previous roles were heavy on report writing, field sampling, logistical preperation
+                    for field events, and sub-contractor oversight. However, numbers and analysis of data has 
+                    always peaked my interest so I enrolled in a data analytics camp to pivot my career into 
+                    a more data-centric role. 
                 </p>
             </div>
             <div class="col">
-                
+                <img class="headshot" 
+                src="{% static 'images/sandia.jpg' %}" 
+                alt="Uh oh, a picture is supposed to be here. The issue is probably on your end..." 
+                title="Sandia Mountains, New Mexico">
+                </img>
+                <p class="centered_text" for="headshot">Hiking in the Sandia Mountains, New Mexico</p>
             </div>
         </div>
     </div>
 
-    <ul class="timeline">
-        <!-- Item 1 -->
-        <li>
-          <div class="direction-r">
-            <div class="flag-wrapper">
-              <span class="hexa"></span>
-              <span class="flag">Texas A&M University</span>
-              <span class="time-wrapper"><span class="time">2012-2014</span></span>
-            </div>
-            <div class="desc">Bachelor of Science in Geology</div>
-          </div>
-        </li>
-      
-        <!-- Item 2 -->
-        <li>
-          <div class="direction-l">
-            <div class="flag-wrapper">
-              <span class="hexa"></span>
-              <span class="flag">University of Oklahoma</span>
-              <span class="time-wrapper"><span class="time">2016-2016</span></span>
-            </div>
-            <div class="desc">Master of Science in Geology</div>
-          </div>
-        </li>
-      
-        <!-- Item 3 -->
-        <li>
-          <div class="direction-r">
-            <div class="flag-wrapper">
-              <span class="hexa"></span>
-              <span class="flag">EA Engineering</span>
-              <span class="time-wrapper"><span class="time">11/2016 - 03/2021</span></span>
-            </div>
-            <div class="desc">Environmental Geologist</div>
-          </div>
-        </li>
 
-        <!-- Item 4 -->
-        <li>
-            <div class="direction-l">
-              <div class="flag-wrapper">
-                <span class="hexa"></span>
-                <span class="flag">California</span>
-                <span class="time-wrapper"><span class="time">12/2019</span></span>
-              </div>
-              <div class="desc">Obtained Professional Geologist license for the State of Califnoria</div>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row" id="text">
+            <div class="col">
+                <h5 class="just_font">
+                    Skills
+                </h5>
+
             </div>
-          </li>
-
-                  <!-- Item 3 -->
-        <li>
-            <div class="direction-r">
-                <div class="flag-wrapper">
-                    <span class="hexa"></span>
-                    <span class="flag">University of Texas</span>
-                    <span class="time-wrapper"><span class="time">04/2021 - 10/2021</span></span>
-                </div>
-                <div class="desc">Data Analyics Bootcamp</div>
-                </div>
-        </li>
-    </ul>
-
+            <div class="col">
+                <h5 class="just_font">
+                    Education
+                </h5>
+                <p class="just_font">
+                    University of Texas - Data Analytics Certificate, October 2021 <br>
+                    University of Oklahoma - Master of Science in Geology, 2016 <br>
+                    Texas A&M University - Bachelor of Science in Geology, 2014
+                    
+                </p>
+            </div>
+        </div>
+    </div>
 
     
 
 
-    <hr class="footer_hr">
+    <!-- <hr class="footer_hr"> -->
 
-    <!-- <div class="centered_items">
-        <p class="centered_text">
-            Hi. 
-            <br>
-            <br>
-            This is my website.
-            <br>
-            <br>
-            You can find stuff out about me:
-            <br>
-            Where I've gone to school.
-            <br>
-            Where I've worked. 
-            <br>
-            How long I've been a P.G. 
-            <br>
-            <br>
-            The blog has blogs. 
-            <br>
-            <br>
-            I have projects on here, too. 
+    <div class="container">
+        <hr class="footer_hr">
 
-        </p>
-    </div> -->
-
-    <hr class="footer_hr">
-
-    <!-- <p class="centered_text">Other places you can find me:</p>
-
-    <div class='centered_items'>
-        <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">
-            <img class="thumb" 
-                alt="linkedin" 
-                src="{% static 'images/li_64.png' %}"
-                title="linkedin">
-        </a>
-        <a href="https://github.com/curtissmith291">
-            <img class="thumb" 
-                alt="github" 
-                src="{% static 'images/gh_64.png' %}"
-                title="github">
-        </a>
-    </div> -->
-
-<!-- 
-    <p class="centered_text">email me at:<br>curtis.smith.geo@gmail.com</p> -->
-
-    <div class="centered_text">
-        <p> 
-        <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">linkedIn</a>
-            ||    
-        <a href="https://github.com/curtissmith291">GitHub</a>
-        </p>
-        <p>curtis.smith.geo@gmail.com</p>
+        <div class="centered_text">
+            <p> 
+            <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">linkedIn</a>
+                ||    
+            <a href="https://github.com/curtissmith291">GitHub</a>
+            </p>
+            <p>curtis.smith.geo@gmail.com</p>
+        </div>
     </div>
 </body>
 </html>

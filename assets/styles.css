@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(59, 59, 65);
+    background-color: #425664;
+    
 }
 
 .centered_items{
@@ -34,6 +35,10 @@ body {
 }
 
 .just_font {
+    font-family: 'Nunito', sans-serif;
+    color: whitesmoke;
+}
+#just_font {
     font-family: 'Nunito', sans-serif;
     color: whitesmoke;
 }
