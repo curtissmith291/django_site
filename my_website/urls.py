@@ -21,6 +21,7 @@ from pages.views import add_result_view, add_view, home_view, home_view_2, scrat
 add_result_view, home_view_2
 from sf_locator.views import sf_view, sf_results_view
 from chord_detector.views import chord_view, chord_result_view
+from chords_in_key.views import chords_in_key_error_view, chords_in_key_view, chords_in_key_result_view
 
 # Note: the "name" attribute is how the url is referenced
 urlpatterns = [
@@ -40,6 +41,9 @@ urlpatterns = [
     path('sf_locator/', sf_view, name="sf_locator"),
     path('sf_locator/sf_locator_results', sf_results_view, name="sf_locator_results"),
     path('chords/', chord_view, name='chords'),
-    path('chords/chords_results', chord_result_view, name='chords_results')
+    path('chords/chords_results', chord_result_view, name='chords_results'),
+    path('keychords/', chords_in_key_view, name='keychords'),
+    path('keychords/keychords_results', chords_in_key_result_view, name='chords_in_key_results'),
+    path('keychords/keychords_error', chords_in_key_error_view, name='chords_in_key_error'),
     # path('blog/', blog_view, name='blog'),
 ]

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
@@ -15,23 +14,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
-    
-    {% load static %}
 
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+	{% load static %}
 
-    <!-- Standard styles between all webpages -->
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+	<!-- Standard styles between all webpages -->
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
 
     <style>
-
-
+        
     </style>
-    
-    <title>Projects - Curtis Smith, P.G.</title>
-
+    <title>Chords in Key - Results</title>
 </head>
-
 <body>
 
     <br>
@@ -58,19 +51,50 @@
         <hr class="footer_hr">
     </div>
 
-    <div class='container'>
-        <form  class="left_text" action="add_result">
-            <label class="main_body" for="first"> Enter 1st Number : </label>
-            <input class="input_field" type="number" id="first" name = "num1" required><br>
-            <label class="main_body" for="second"> Enter 2nd Number :  </label>
-            <input class="input_field" type="number" id="second" name = "num2" required><br>
+    <div class="container">
+        <div class="left_text">
+            <p>
+                Key: {{key}}
+                <br>
+                Fret Range: {{low_fret}} - {{high_fret}}
+            </p>
 
-            <input class="button" type="submit" name="Click Me">
-        </form>
+            <p>
+                Diatonic Chords for Your Key:
+                <ul style="list-style: none;">
+                    {% for dict in list_of_dicts %}
+                        <li class="text"> {{dict.degree_r}} -- {{dict.note}} {{dict.type}} 
+                            <br>
+                            <!-- iterating through list to get rid of quotes -->
+                            <!-- i.e. "C, F, G" instead of "['C', 'E', 'G']" -->
+                            {% for item in dict.structures %}
+                                {{item}},
+                            {% endfor %}
+                        </li>
+                        <br>
+                    {% endfor %}
+            
+                </ul>
+            </p>
+        </div>
+        <a href="/keychords">
+            <button>
+                Back to Input
+            </button>
+        </a>
     </div>
 
     <div class="container">
         <hr class="footer_hr">
+
+        <div class="centered_text">
+            <p> 
+            <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">linkedIn</a>
+                ||    
+            <a href="https://github.com/curtissmith291">GitHub</a>
+            </p>
+            <p>curtis.smith.geo@gmail.com</p>
+        </div>
     </div>
 
     <div class="container">
@@ -78,25 +102,11 @@
 			Project Description
 		</h3>
 		<p class='left_text'>
-			The python code for this project is very simple; however, this project was my first incorporation
-            of feeding user input into a python function and returning the result. It's mostly kept for posterity.
+			"Find a project that aligns with your interests."
 			<br>
             <br>
         </p>
     </div>
-
-    <div class="container">
-		<hr class="footer_hr">
-
-		<div class="centered_text">
-			<p> 
-			<a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">linkedIn</a>
-				||    
-			<a href="https://github.com/curtissmith291">GitHub</a>
-			</p>
-			<p>curtis.smith.geo@gmail.com</p>
-		</div>
-	</div>
 
 </body>
 </html>

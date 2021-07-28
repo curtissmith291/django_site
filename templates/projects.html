@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 
     <!-- Styles Unique to this webpage -->
-
     <style>
 
         .link:link{
@@ -35,27 +34,12 @@
           text-decoration: underline;
           
         }
-		/* For project descriptions */
-        .project_descriptions{
-            text-align: left;
-            margin-right: 10px;
-            font-family: 'Nunito', sans-serif;
-            color: whitesmoke;
-        } 
-
 		/* Horizontal rules between project entries */
         hr.short_length {
 			border: 0.5px solid whitesmoke;
 			opacity: 0.7;
 			margin-right: 10px;
         }
-		.test{
-			/* align-items: center; */
-			/* justify-content: center; */
-			margin-left: 20px;
-			margin-right: 20px;
-		}
-
     </style>
     
     <title>Projects - Curtis Smith, P.G.</title>
@@ -94,7 +78,7 @@
 			Projects. There are many, but these are mine. 
 			<br>
 			<br>
-			The projects are listed in reverse-chronological order, and are projects independent of
+			The projects below are listed in reverse-chronological order, and are independent of
 			coursework required for the data-analytics bootcamp. My GitHub (link at bottom of the page)
 			contains a more exhaustive list of projects, including coursework. 
 		</p>
@@ -109,6 +93,17 @@
 	<div class="container">
 		
 		<!-- <hr class="short_length"> -->
+		<a class="link" href="/keychords">Chords in a Key</a>
+		<p class="left_text">
+			For this project, the user inputs the they desired musical key and a fret range; the diatonic chords for the 
+			selected key that are within the fret range are returned. 
+		</p>
+		<p class="left_text">Tags:
+			<span class="badge badge-pill badge-light">Python</span>
+		</p>
+
+		<hr class="short_length">
+
 		<a class="link" href="/chords">Guitar Chord Finder</a>
 		<p class="left_text">
 			For this project, the user inputs the frets for each string of a guitar, and the chord name, if any, 
@@ -117,33 +112,35 @@
 		<p class="left_text">Tags:
 			<span class="badge badge-pill badge-light">Python</span>
 		</p>
+
 		<hr class="short_length">
 
 		<a class="link" href="/sf_locator">Superfund Site Locator</a>
 		<p class="left_text">
-			This project returns a list of EPA Superfind Sites within 50 miles of the 
-			input address.</p>
+			This project returns a list of EPA Superfind Sites within 50 miles of the input address.
+		</p>
 		<p class="left_text">Tags:
 			<span class="badge badge-pill badge-light">Python</span>
 			<span class="badge badge-pill badge-light">Pandas</span>
 			<span class="badge badge-pill badge-light">API</span>
 		</p>
+
 		<hr class="short_length">
 
 		<a class="link" href="/add">Adding Numbers</a>
 		<p class="left_text">
-			This link is to a webpage that adds two input integers.</p>
-		<hr class="short_length">
+			Two input integers are added together.</p>
+		<!-- <hr class="short_length"> -->
 
-		<a class="link" href="/square">Number Squared</a>
+		<!-- <a class="link" href="/square">Number Squared</a>
 		<p class="left_text">This link is to a simple webpage that squares an integer the user inputs.</p>
 		<hr class="short_length">
 
 		<a class="link" href="/hello">Hello, User</a>
-		<p class="left_text"> This link is to a simple webpage that returns your username with a friendly "Hello".</p>
-		
-		
+		<p class="left_text"> This link is to a simple webpage that returns your username with a friendly "Hello".</p> -->
+				
 	</div>
+
 	<br>
 
     <div class="container">

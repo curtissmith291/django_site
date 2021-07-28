@@ -7,49 +7,24 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
     
     {% load static %}
 
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <!-- Standard styles between all webpages -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
     <style>
-        .navbar.navbar-expand-sm.bg-transparent.navbar-dark.justify-content-center{
-            font-size: smaller;
-            font-family: Verdana;
-        }
-
-        body{
-            background-color: rgba(10, 10, 10, 100);
-          }
-
-        .thumb {
-            width: 35px; 
-            float: left;
-            margin-left: 10px;
-            
-        }  
-
-        .test{
-            line-height: 40px;
-        }
-
-        .container{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .links{
-            text-align: center;
-            font-family: Verdana;
-            color: whitesmoke;
-            opacity: 0.8;
-        }
-
-        .main_body{
-            text-align: center;
-            font-family: Verdana;
-            color: whitesmoke;
-            opacity: 0.8;
-        }
+        
     </style>
     
     <title>Projects - Curtis Smith, P.G.</title>
@@ -58,30 +33,71 @@
 
 <body>
 
-<br>
-<h1 style="text-align: center;font-family: Verdana;font-weight:normal;
-color:whitesmoke;">
-    CURTIS SMITH, P.G.
-</h1>
+	<br>
 
-<!-- Grey with black text -->
-<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/blog">Blog</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/projects">Projects</a>
-      </li>
-    </ul>
-</nav>
-<br>
-<p class="main_body">
-Result : {{result}}
-</p>
+	<h1 class="cs_header">
+		CURTIS S. SMITH, P.G.
+	</h1>
+  
+	<nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center" id="just_font">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/home">home</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="/projects">projects</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/blog">the blog</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<hr class="footer_hr">
+	</div>
+	
+	<div class="container">
+		<p class="centered_text">
+		Result : {{result}}
+		</p>
+
+		<a href="/add" class="centered_items">
+			<button>
+				Back to Input
+			</button>
+		</a>
+	</div>
+
+	<div class="container">
+		<hr class="footer_hr">
+	</div>
+
+	<div class="container">
+		<h3 class='left_text'>
+			Project Description
+		</h3>
+		<p class='left_text'>
+			The python code for this project is very simple; however, this project was my first incorporation
+            of feeding user input into a python function and returning the result. It's was a proof-of-concept 
+			project mostly kept for posterity.
+			<br>
+            <br>
+        </p>
+    </div>
+
+	<div class="container">
+		<hr class="footer_hr">
+
+		<div class="centered_text">
+			<p> 
+			<a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">linkedIn</a>
+				||    
+			<a href="https://github.com/curtissmith291">GitHub</a>
+			</p>
+			<p>curtis.smith.geo@gmail.com</p>
+		</div>
+	</div>
+
+</body>
+</html>

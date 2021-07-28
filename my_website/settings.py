@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'pages',
     'theblog',
     'sf_locator',
-    'chord_detector'
+    'chord_detector',
+    'chords_in_key'
 
     
 ]
