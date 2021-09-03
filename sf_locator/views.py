@@ -58,7 +58,7 @@ def sf_results_view(request):
             state = state_abbrev[state]
 
         # opens csv of superfund site locations
-        sf_df = pd.read_csv('resources/sf_sites_cleaned.csv')
+        sf_df = pd.read_csv('assets/sf_sites_cleaned.csv')
 
         # Reduces df to only states matching user input
         # sf_df = sf_df[sf_df["SITE_STATE"] == state]

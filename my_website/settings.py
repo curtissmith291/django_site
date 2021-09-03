@@ -46,9 +46,10 @@ INSTALLED_APPS = [
     'theblog',
     'sf_locator',
     'chord_detector',
-    'chords_in_key'
+    'chords_in_key',
+    'ok_eq_map',
+    'eq_analysis'
 
-    
 ]
 
 MIDDLEWARE = [

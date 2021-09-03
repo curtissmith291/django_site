@@ -22,6 +22,8 @@ add_result_view, home_view_2
 from sf_locator.views import sf_view, sf_results_view
 from chord_detector.views import chord_view, chord_result_view
 from chords_in_key.views import chords_in_key_error_view, chords_in_key_view, chords_in_key_result_view
+from ok_eq_map.views import ok_eq
+from eq_analysis.views import eq_analysis_view
 
 # Note: the "name" attribute is how the url is referenced
 urlpatterns = [
@@ -45,5 +47,7 @@ urlpatterns = [
     path('keychords/', chords_in_key_view, name='keychords'),
     path('keychords/keychords_results', chords_in_key_result_view, name='chords_in_key_results'),
     path('keychords/keychords_error', chords_in_key_error_view, name='chords_in_key_error'),
+    path('oklahoma_earthquakes/', ok_eq, name='ok_eqs'),
+    path('oklahoma_eq_analysis/', eq_analysis_view, name='eq_analysis'),
     # path('blog/', blog_view, name='blog'),
 ]

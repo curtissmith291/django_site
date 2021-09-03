@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+
+    <title>Oklahama Earthquakes</title>
+
+    {% load static %}
+
+    <!-- Standard style between all webpages -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <!-- Styles Unique to this webpage -->
+    <style>
+        hr.short_length {
+			border: 0.5px solid whitesmoke;
+			opacity: 0.7;
+            width: 33%
+        }        
+    </style>
+
+</head>
+<body>
+
+    <br>
+
+    <h1 class="cs_header">
+        CURTIS S. SMITH, P.G.
+    </h1>
+    
+    <nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center" id="just_font">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/projects">projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/blog">the blog</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <hr class="footer_hr">
+    </div>
+
+	<br>
+
+    <div class="container">
+		<h3 class='left_text'>
+			Project Description
+		</h3>
+        <p class='left_text'>
+            Below is a write-up for an analysis performed on the relationship between the volume of injected fluids and occurrence of 
+            earthquakes in Oklahoma. Assocated documentation and code can be found on the GitHub repository: 
+            <a href="https://github.com/curtissmith291/oklahoma_earthquakes">Oklahoma Earthquakes GitHib repository</a>.
+            <br><br>
+            The project was a personal side project not associated with the class. The goal was to intersect my geologic background and 
+            recently learned analyical methods learned. Below the formal write-up is an informal discussion where I discuss my thoughts 
+            on the project and lessons learned. 
+        </p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+
+        <div class="container">
+            <h2 class='centered_text'>
+                Earthquakes in Oklahoma: Exploring the Relationship Between Waste Water Injection and Seismic Events
+            </h2>
+        </div>
+
+        <br>
+
+        <h4 class='left_text'>
+            Introduction
+        </h4>
+        <br>
+        <p class='left_text'>
+            Oklahoma has experienced a marked increase in seismicity since 2009 which has been strongly linked to the 
+            increase in saltwater disposal (SWD) volumes injected into the Arbuckle Group [1, 2, 3]. This SWD 
+            is a direct result of hydralic fracturing (informally known as fracking); the hydraulic fracturing requires an enormous amount 
+            of water that must be disposed of after the hydrocarbon recovery process - in 2015, the year with the 
+            highest injection volume, nearly 330,000,000 m³ of wastewater were injected into the Arbuckle 
+            Group in Oklahoma, with more volume injected into various other formations. This project attempts to model 
+            the realationship between the increase of injection volumes and the increase in seismic events within 
+            Oklahoma. 
+        </p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+
+        <h4 class='left_text'>
+            Background
+        </h4> 
+        <br>
+        <h5 class='left_text'>
+            Geologic Setting
+        </h5> 
+            <p class='left_text'>
+                The Arbuckle Group is a relatively poorly understood geological formation of approximately Late Cambrian - 
+                Ordovician age (approximately 480-490 million years old). The Arbuckle Group is primarily composed of nearly 
+                pure carbonates, which, through karst dissolution processes, have produced significant amounts of porosity making it a 
+                suitable candidate for wastewater storage [4]. However, the Arbuckle Group has hydraulic communication with 
+                the crystalline basement below containing pre-existing faults under stress. It is hypothesized that injection 
+                of wastewater into the Arbuckle Group causes pressure on the pre-existing faults, thus reducing the frictional 
+                resistance, inducing seismicity [1]. 
+                
+            </p>
+        <br>
+        <h5 class='left_text'>
+            Wastewater Injection Background
+        </h5> 
+            <p class='left_text'>
+                Waste water injection wells are used to inject fluid into porous geologic formations. The waste water is typically 
+                a brine mixed with proprietary chemicals used in the hydraulic fracturing process. The wells included in this study 
+                are Class II wells, used for fluids associated with oil and natural gas production. 
+            </p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+        
+        <h4 class='left_text'>
+            Data Acquisition
+        </h4>
+        <p class='left_text'>
+			Acquisition of data for this project was relatively stright forward: injection data was downloaded 
+            as XLSX files from the Oklahoam Coproration Commission's (OCC) website [5], and the earthquake 
+            data was retreived via API from the United States Geological Survey (USGS) [6].
+            Additionally Oklahoma Geological Survey (OGS) has data on seismic events; however, their download interface
+            is less suited for large scale downloads and do not include earthquake data post 2018. 
+        </p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+
+        <h4 class='left_text'>
+            Methods
+        </h4> 
+		<p class='left_text'>
+            This section details pre-processing of earthquake and injection data prior to linear regression modeling, 
+            along with further processing descisions resulting from exploratory data analysis.
+            <br><br>
+            <h5 class='left_text'>
+                Wastewater Injection Data
+            </h5> 
+            <br>
+            <p class='left_text'>
+                Wastewater injection data from the the OCC website were provided in three major categories:
+                <br><br>
+                1) Daily injection volumes from SWD wells located in the Area of Interest (AOI) completed in the Arbuckle 
+                Group. Each years' data is contained in one XLSX file, and the years 2012-2021 are represented, 
+                and updated daily. However, daily injection rates for these wells were not required until 27 March 
+                2016, thus, data prior to that date are considered incomplete. As shown in Figures 1 and 2, the 
+                dropoff in injection volumes during 2020 are possibly die to incomplete data. 
+                <br><br>
+                2) Monthly injection volumes for all SWD wells located in Oklahoma. Each years' data is contained 
+                in one XLSX file; there is monthly data for 2011-2020. It's noted, though, that data post 2019 is 
+                considered incomplete and is subject to being updated.
+                <br><br>
+                3) Yearly injection volumes for all SWD Wells located in Oklahoma from 2006-2010. 
+                <br><br>
+                During intital viewing of the data, it was noticed that there was a discrepency between volumes 
+                from the daily and monthly injection data files: after approximately 2015, the daily rates summed to
+                a monthly volume were high as 3,179,746 m³ (~840,000,000 gallons; 20,000,000 barrels). After analysis 
+                of the data, it was determined that there were  different reported volumes for the same wells in 
+                both data sets. Ostensibly, the monthly data should have the complete data, as, per the OCC website, 
+                the monthly injection volumes sorted by year "...contains annual reporting of volumes for all injection 
+                wells submitted to the Underground Injection Control (UIC) Department..." [5], while the daily data should only 
+                be a subset of the total wells located in the AOI. Figure 1 (below) displays the discrepency. 
+                <br><br>
+            </p>
+
+            <br>
+            <div class="centered_items">
+                <img 
+                    src="{% static 'images/inj_sources.png' %}" 
+                    alt="Uh oh, a picture is supposed to be here. The issue is probably on your end..." 
+                    title="Figure 1: Injection Sources Comparison">
+                </img>
+            </div>
+            <p class='centered_text'>Figure 1: Comparison of Wastewater Injection Volume Sources</p>
+
+            <br>
+
+            <p class='left_text'>
+                Figure 1 displays the differences in volumes between the monthly, daily, and combined data sources. As stated above, daily 
+                volumes (red; note that daily volumes were grouped and summed by month) were not required to be submitted 
+                to the OCC until 27 March 2016; however, the large increase in volume corresponds 
+                to March 2015 - it is possible that there is a typo on the OCC website. Due to the lack of data prior to 
+                March 2015, the daily data could not be used on its own for the analysis. Monthly data is available as far 
+                back as 2011, and makes up the bulk of the injection numbers used for analysis. Monthly data is available for 
+                every well in Oklahoma - as such, the monthly data were filted by well identification number to match wells 
+                included in the daily data, as those wells are located in the AOI. However, after filtering the monthly data 
+                and grouping the daily data by month, the monthly injection volumes did not match. The blue line in Figure 1 
+                displays the filtered monthly injection volumes. 
+                <br><br>
+                The daily and monthly data were then combined, with duplicate well identification numbers with lower total monthly
+                volumes dropped; the green line in Figure 1 displays the combined data. After combination, it was decided that 
+                the monthly data would be used for analysis without combining with the daily data since it is impossible to know whether the daily or 
+                monthly datasets contain the values more closely aligned with true injection volumes, thus, there was no adequate 
+                basis for determing which of the values to drop.  However, the volumes and trends identified here within are 
+                analagous to other independent and peer reviewed studies [1, 7].
+                <br><br>
+                It should be noted that, due to the limitations and goals of this study, the well injection volume data 
+                here within should not be considered completely representative of the actual well injection volumes: a more complete
+                study should involve communication with the OCC to resolve possible discrepencies in their data.
+            </p>
+            <br>
+            <h5 class='left_text'>
+                Seismic Event Data
+            </h5> 
+            <br>
+            <p class='left_text'>
+                Data were downloaded from the USGS website via an API call; data cleaning involved removing earthquake entries with 
+                negative magnitude and those with missing data (e.g., no magnitude, geographic coordainates). The earthquake data 
+                were then filtered for only events which occur wthin 20 km of an injection well. The spatial relationship between 
+                the seismic event location and injection locations is noted to be an important attribute: 20 km was chosen to be a 
+                reasonable distance after comparison with other studies. Lastly, only earthquakes of magnitude 3 or higher were 
+                included in the analysis, per convention with literature [1, 3, 7, 8]. The interactive map below displays the 
+                earthquakes per year. 
+            </p>
+
+            <br>
+
+            <div class="centered_items">
+                {% if graph %}
+                {{ graph|safe }}
+                {% else %}
+                <p>No graph was provided.</p>
+                {% endif %}
+            </div>
+
+            <br>
+
+            <br>
+            <h5 class='left_text'>
+                Initial Visualization and Processing
+            </h5> 
+            <br>
+            <p class='left_text'>
+                Preprocessed data were imported into a Jupyter Notebook and combined for intitial visualization and analysis. 
+                Minor aditional data manipuation was performed to prepare the datasets for plotting and 
+                regression analysis. The general structure of data used for analysis was as follows: only earthquakes within 
+                20km of an injection well were included, earthquakes were filtered such that only earthquakes of magnitude 3.0
+                or higher were included, and earthquake events were then grouped and summed by month to match the resolution of the 
+                injection data. 
+                <br><br>
+                Consideration for running analysis on the daily earthquake data and daily injection data was ultimitaly discarded 
+                for a number of reasons discussed in this paragraph. First, temporal distribution of seismic events is an important 
+                factor, thus, it was deeemed necessary that analysis should capture the largest timeframe possble - this required 
+                balancing the resolution of injection data. As described above, yearly injection data was available from 2006-2010 - 
+                this resolution was deemed too coarse for our needs, and did not caplture the increase in seismic activity. Daily injection volume 
+                was available from 2012 to 2021; however, daily volumes were not required to be submitted prior to March 2016, thus
+                any data prior to that data could not be considered complete. As such, daily cata could only be considered reliable post March 2016. 
+                As shown below in Figure 2 (note that Figure 2 is interactive), starting analysis post March 2016 would exclude a 
+                large proprtion of data, including the increase in both injection rates and earthquake events. Monthly data was available 
+                from 2011 to 2020. After the prior considerations, it was determined that monthly data would strike the best balance 
+                between temporal distribution and temporal resolution. 
+                <br><br>
+            </p>
+
+            <br>
+            <div class="centered_items">
+                {% if graph_1 %}
+                {{ graph_1|safe }}
+                {% else %}
+                <p>No graph was provided.</p>
+                {% endif %}
+            </div>
+            <p class='centered_text'>Figure 2: Monthly Count of Earthquakes of Magnitude 3 or Greater vs. Monthly Injection Rates.</p>
+
+            <br>
+
+            <p class='left_text'>
+                Two important details were noticed after plotting the monthly injection volumes and monthly earthquake occurrences 
+                through time: 1) There was a lag between increasing injection rates and increased seismicity, and 2) there appeared 
+                to be a critical threshold of injection volume required necessary prior to trigging statewide, consistent, earthquake 
+                events. Each of the aformentioned details are described in greater detail in the following paragraphs. 
+                <br><br>
+                The time lag is evident in Figure 2 and is discussed by Langenbruch and Zoback [1], where they state that "A time lag 
+                of several months between the injection of fluid and associated occurrence of earthquakes is not unexpected." Further 
+                noting that a lag of "several years" is common. To account for the time lag in this analysis, in inciments of seven 
+                days, time was subtracted from seismic events so as to simulate the occurence of seismic events occurring 
+                "concurrently" with thir respective injection volumes: offsets were calculated up to two years by. 
+                <br><br>
+                Additionally, there is a threshold of injection volumes required to "kick-start" the seismic processes, with the exception of the 
+                November 2011 "Prague" earthquake (magnitude 5.6). Note that this analysis is a state-wide look at earthquake 
+                activity, as such, it is possible that the injection volume local to the "Prague" earthquake was suffeciant to trigger 
+                the seismic event, but state-wide volume was still below the threshold for more wide spread events.  
+                There are a multitude of factors that can influence the occurrence of and individual seismic event, and is beyond 
+                the scope of this project to account for all of them. 
+                <br><br>
+                As shown in Figure 2, the trigging threshold appears to be 
+                10,000,000 m³ of injected fluid per month, which was achieved approximately December 2012; however, it is possible 
+                that the triggering threshold is lower due to the time lag between injection volumes and seismic events - 
+                down to approimately 8,000,000 m³ per month, if the lag is as high as two years as stated as a possibility 
+                by Langenbruch and Zoback [1]. Additionally, it appears that once the triggering threshold is exceeded, dropping below 
+                the triggering threshold does not cease seismic activity. Note that after injection volumes dropped below 10,000,000 m³ 
+                per month (approximately April 2016), seismic activity continued at an increased rate relative to similar monthly 
+                injection volumes prior to December 2012 when the triggering threshold was breached. When accounting for two-year time 
+                lag and dropping the the triggering threshold 
+                to 8,000,000 m³ per month, seismic activity still continued at an elevated rate. As seismic events are still occuring at 
+                rates above the rates prior to the triggering threshold, the "reverse threshold", this is the monthly injection volume at 
+                which seismic events reach their pre-triggering threshold levels, is unknown. However, 2020 has had the lowest occurence 
+                of earthquakes of magnitude 3 or greater, with monthly counts only as high as 3 for January through May. The injection 
+                data for 2020 is considered incomplete by the OCC, thus, we cannot accuratly draw a correlation between 2020 seismic 
+                events and their concurrent injection volumes. 
+            </p>
+
+        </p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+        
+        <h4 class='left_text'>
+            Modeling
+        </h4> 
+
+        <p class="left_text">
+            Linear regression anaylsis was performed on data from 2011 to 2019, because, as mentioned above, injection data post 2019 
+            is considered incomplete. Splitting of the training and testing data was done under two arrangments: 1) the training and 
+            testing data were split randomly using "train_test_split" from sklearn, and 2) using data from 2011-2018 as the training 
+            data, and data from 2019 as the testing data to test the model's predictive capability on past data. 
+            <br><br>
+            Figure 3 (below) displays the R² values for the results of random split arrangment. A linear regression model was perfomed 
+            using the complete offset earthquake dates, up to two years, as descibed above. Overall shape of the curve followed a rough 
+            "hill" pattern, with maximum coefficient of determination (R²) values in the center, and lower R² on the sides. Testing the model with the random subset 
+            (25% of the data) produced an R² of 0.45, that is, injection volumes accounted for appoximately 45% of the variance in 
+            the model. Subsequent offsets of seven days continuously increased model performance up to a local maximum of 0.89, 
+            corresponding to an offset of 175 days (25 weeks). After 175 days, R² values followed a roughly sinusoidal pattern 
+            with periods ranging from 49 to 70 days leading to a maximum R² value of 0.91, corresponding to an offset of 357 days 
+            (51 weeks). Following the maximum, the sinusoidal pattern became less pronounced and decreased to a minumum R² of -17.95, 
+            corresponding to the maximum tested offset of 728 days (104 weeks). The mechanism behind the sinusoidal pattern has not 
+            been determined; however, it is plausible that the pattern an artifact due to clustering of earthquakes by month - due to large 
+            spikes in earthquake occurrences resulting from aftershocks (discussed in greater detail in the Discussion Section), 
+            there exist combinations of months with disproportionally large counts of earthquakes relative to the general trend. 
+            Data not fitting the general trend, that is, outliers, negatively affect performance of the model lower the R² scores. 
+        </p>
+
+        <br>
+        <div class="centered_items">
+            <img 
+                src="{% static 'images/r2_1.png' %}" 
+                alt="Uh oh, a picture is supposed to be here. The issue is probably on your end..." 
+                title="Figure 3: R² Values vs. Offset in Weeks">
+            </img>
+        </div>
+        <p class='centered_text'>Figure 3: R² Values vs. Offset in Weeks - Random Train/Test Data</p>
+
+        <br>
+
+        <p class='left_text'>
+            Results of the second second arrangement, where the model was used in a predictive capacity to test earthquake occurrences in 2019, are 
+            shown in Figure 4 below, again, displaying R² values versus the offset in days. Results followed a rough "valley" shape, with 
+            relatively higher R² values towards the ends of the graph and a minimum R² in the center. R² results from the predictive 
+            arrangement are considerably lower than results from the random split arranement, and the resulting pattern is roughly inverse, 
+            though much less defined. The maximum R² value was -0.23, corresponding to an offset of 21 days. The minimum offset was -58.57, 
+            corresponding to an offset of 434 days (62 weeks). 
+        </p>
+
+        <br>
+        <div class="centered_items">
+            <img 
+                src="{% static 'images/r2_2.png' %}" 
+                alt="Uh oh, a picture is supposed to be here. The issue is probably on your end..." 
+                title="Figure 4: R² Values vs. Offset in Weeks - 2019 Prediction">
+            </img>
+        </div>
+        <p class='centered_text'>Figure 4: R² Values vs. Offset in Weeks - 2019 Prediction</p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+        
+        <h4 class='left_text'>
+            Discussion
+        </h4> 
+
+        <br>
+
+        <h5 class='left_text'>
+            Modeling Results: Correlation vs. Prediction
+        </h5> 
+
+        <p class="left_text">
+            As presented above, the results of the correlation arrangement produced a reasobale suffecient R² value to suggest that 
+            there is a correlation between the volumne of injected water and the occurrence of seismic activity. In accordance with 
+            the literature, there appears to be a lag between injection and seismic events - with an offset of 25 weeks resulting 
+            in an R² value of 0.89. Following 25 weeks, a sinusoidal pattern emerges with peaks corresponding to an R² value of 
+            approximately 0.90. While the sinusoidal pattern possibly results from grouping earthquake counts by month, the relatively 
+            peaks suggest that there is no single value that corresponds to an ideal offset - that is, delays beween injection and  
+            earthquakes likely range from 25 to 51 weeks, after which, the sinusoidal trend then follows a decreasing pattern with the 
+            decreasing peak values with increasing offset (See Figure 3).
+            <br><br>
+            Given the scope and generalizations required for this model(that is, this project represents the entirety of Oklahoma's 
+            injection wells), a range of earthquake delays is not unexpected. Beyond selecting only earthquakes that occur within 20 
+            km of an injection well, this model does not take into acount the spatial relationship between injection and earthquake 
+            focal point location.   
+            <br><br>
+            In contrast to the relatively high R² value for determing the correlation between injection and earthquakes, the attempt 
+            to predict occurrences in 2019 based on a linear regression model produced from data from 2011-2018 resulted in very low 
+            R² values. This is not unexpected do to a variety of factors, most of which relate to the nature of earthquakes. 
+            Individual earthquakes do not necessarily have a strict linear relationship with injection volumes and the resulting 
+            propogated pressure wave; slippage along a fault requires a minimum pressure to trigger that slippage. Linearly increasing 
+            local injection rates will not linearly increase the resultant count nor magnitude of earthquake prior to reaching the 
+            pressure threshold for triggering the seismic event. After the seismic event, local faults realize a pressure stabilization 
+            and reach a state of relative equilibrium. Aggregating earthquake counts over a large enough area helps to combat this 
+            localization problem; however, the problem is not completely mitigated and appears when attempting to make a predicictions 
+            of monthly earthquake counts.
+            <br><br>
+            The second major problem for earthquake predictions deals with the occurrence of preshocks and (to a much greater extent) 
+            aftershocks. The "Earthquake Declustering" section below discusses this in greater detail, along with a discussion of an 
+            initial attempt to decluster earthquake events. 
+        </p>
+
+        <br>
+
+        <h5 class='left_text'>
+            Earthquake Declustering
+        </h5> 
+
+        <p class="left_text">
+            Large spikes in monthly earthquake counts, as shown in Figure 2, correlate to large magnitude earthquakes - as the 
+            magnitude of an earthquake increases, the number of preshocks and aftershocks increases, with aftershocks commonly 
+            occuring immediately after the main earthquake and into the following days. For example, McGarr and Barbour concluded 
+            that 13 February 2016 "Fairview" earthquake was associated with as many as 63 foreshocks and 89 aftershocks [8]. Predicting 
+            aftershock counts is beyond the scope of this project; however, an attempt was made to "descluster" earthquake 
+            occurrences, that is, to isolate the main earthquake from the pre/aftershocks. Declustering was performed by ordering 
+            seismic events by magnitude in decending order, then removing all earthquakes that occur within a two kilometer radius. 
+            <br><br>
+            Results of declustering substantially reduced the number of seismic events, from 2799 events to 564 events. An exploratory 
+            linear regression analysis was performed on the new declusted data; however, results were genreally no better than 
+            previous regressions. It is likely declustering was too liberal in removing earthquakes. The fewer earthquake events there 
+            are, the smaller the errors in the prections need to be to get small R² values. A more focused study could attempt to 
+            more accurately classify earthquakes as main vs. preshocks and aftershocks.
+  
+        </p>
+
+        <br>
+
+        <h5 class='left_text'>
+            Model Uses and Predictive Capability
+        </h5> 
+
+        <p class="left_text">
+            Results from the predictive arrangement (Figure 4) were insuffecient to accurately predict monthly occurrences of earthquakes, 
+            as R² value were largly sufficiently below zero. 
+            <br><br>
+            The best use for this model was roughly determining the offset range, that is, the lag between injection and seismic events, to 
+            back-calculate the overall state-wide, monthly injection volume corresponding to the triggering threshold. As 
+            discussed above, the best R² values from the correlation focused model suggested an offset range of 25 to 51 weeks. Prior, to 
+            applying any offset, the injection threshold appears to be approximately 10,000,000 m³ of injected fluid per month. After applying 
+            the offset resulting from the model, the injection threshold drops to approximately 8,600,000 m³ to 8,000,000 m³ of injected fluid 
+            per month; however, those values were reached in August 2017 and April 2017, respectively. Despite monthly injection values dropping 
+            below the caluculated threshold, earthquake events continue above pre-threshold levels, suggesting additional factors responsible 
+            for continued seismic activity.
+            <br><br>
+            As such the 8,600,000 m³ to 8,000,000 m³ of injected fluid per month range should be considered a maximum, and could be used as such 
+            for future models. As R² values reached a maximum of approximately 0.9 for the 25 to 51 week offset range, an additional 10% of the 
+            variance can be explained through other varaibles. 
+        </p>
+
+        <br>
+
+        <h5 class='left_text'>
+            Future Work
+        </h5> 
+
+        <p class="left_text">
+            The calculated threshold failed to solely predict the approriate threshold at which seismic events would return to their pre-threshold 
+            values. Additional work should focus on the spatial relationships between the earthquake events and local injection volumes. This 
+            project correlation statewide injections with statewide earthquakes; however, earthquakes are only dependent on local injection 
+            volumes. Additonally, further attempt should be made to accurately decluster earthquake events. Proper classification of main 
+            earthquakes vs. pre/aftershocks could narrow down which earthquakes result from injection and which are the result of a larger main 
+            earthquake.  
+        </p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+
+        <h4 class='left_text'>
+            Conlusions
+        </h4> 
+
+        <p class="left_text">
+            Overall, the linear regression results between injection volumes and increase in seismicity present high enough R² values 
+            to suggest that there is correlation between the increase in injection volumes since 2011 and the increase in seismic events 
+            in Oklahoma. While the monthly predictive capability of the model presented poor results, the model ultimately provised a 
+            possible maximum monthly injection threshold target for the State of Oklahoma in order for statewide earthquakes to reach 
+            pre-2011 levels. 
+
+        </p>
+
+        <br>
+        <hr class="short_length">
+        <br>
+        
+        <h4 class='left_text'>
+            Citations
+        </h4> 
+        <p class='left_text'>
+            [1] Langenbruch, C and Zoback, M - 
+            <a href="https://advances.sciencemag.org/content/2/11/e1601542?dom=pscau&src=syn">
+                How will induced seismicity in Oklahoma respond to decreased saltwater injection rates?</a>
+            <br>
+            [2] United States Geological Survey - 
+            <a href="https://www.usgs.gov/faqs/oklahoma-has-had-a-surge-earthquakes-2009-are-they-due-fracking?qt-news_science_products=0#qt-news_science_products">
+                Oklhoma has had a surge of earthquakes since 2009. Are they due to fracking?</a>
+            <br>
+            [3] Hincks, et al. - 
+            <a href="https://science.sciencemag.org/content/359/6381/1251">
+                Oklahoma's induced seismicity strongly linked to wastewater injection depth</a>
+            <br>
+            [4] Bureau of Economic Geology - 
+            <a href="https://www.beg.utexas.edu/gccc/co2-data/arbuckle-00">
+                Arbuckle Group, Oklahoma</a>
+            <br>
+            [5] Oklahoma Corporation Commission - 
+            <a href="https://oklahoma.gov/occ/divisions/oil-gas/oil-gas-data.html">
+                Oil and Gas Data Files</a>   
+            <br>
+            [6] United States Geological Survey - 
+            <a href="https://earthquake.usgs.gov/fdsnws/event/1/">
+                API Documentation - Earthquake Catalog</a>
+            <br>
+            [7] Zhai, et al. - 
+            <a href="https://www.pnas.org/content/116/33/16228">
+                Pore-pressure diffusion, enhanced by poroelastic stresses, controls induced seismicity in Oklahoma</a>
+            <br> 
+            [8] McGarr, A and Barbour, A - 
+            <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017GL075258">
+                Wastewater Disposal and the Earthquake Sequences During 2016 Near Fairview, Pawnee, and Cushing, Oklahoma</a>
+            <br> 
+
+
+            <br>
+            <div class="container">
+                <hr class="footer_hr">
+            </div>    
+
+            <br>
+            <h4 class='left_text'>
+                Informal Project Discussion
+            </h4> 
+            <p class='left_text'>
+                The goal of this project was to apply methods learned during my 
+                data analytics program to a problem more relevant to my interests and background - a large chunk 
+                of homework and classwork in the proram deals with neutral, curated datasets. Of course, that is 
+                not unexpected, but it doesn't allow for much in the way of creativity. Enter this project. Immediately 
+                after graduating with my MS, I worked for the Oklahoma Geological Survey where I contributed to a project 
+                looking at the relationship between wastewater injection and seismic activity. Note that that was in 2016, 
+                right in the midst of the earthquake madness. So I thought it would be neat to revisit the problem half a 
+                decade later. 
+                <br><br> 
+                Expectedly, scope creep occured quite quickly in this project. What started out as a way to practice some linear 
+                regression turned into a madhouse of data cleaning, manipulation, learning about seismicity , and reading 
+                scientific papers dealing with this very topic. In short - the entire topic of 
+                induced seismicity relating to injection wells is a pretty dang complex topic with a lot of confounding 
+                factors that were far beyond the original scope of the project. So, while the results of my analysis 
+                leave a little to be desired, I still chalk up this project up as a win. I got a ton of practical 
+                practice with Python (especialy Pandas) and I learned about manipulating and cleaning data and how it can 
+                affect the results of regression analyses. Yes, there is definitely more that can be done with the project; 
+                however, in time-limited circumstances, eventaully you reach a point of diminishing returns and you need 
+                to move on to another project that allows for learning of new topics.
+                <br>
+            </p>
+        </p>
+        <br>
+	</div>
+
+	<div class="container">
+        <hr class="footer_hr">
+
+        <div class="centered_text">
+            <p> 
+            <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">linkedIn</a>
+                ||    
+            <a href="https://github.com/curtissmith291">GitHub</a>
+            </p>
+            <p>curtis.smith.geo@gmail.com</p>
+        </div>
+    </div>
+
+</body>
+</html>
