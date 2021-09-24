@@ -8,7 +8,10 @@ import pandas as pd
 
 def eq_analysis_view(request, *args, **kwargs):
 
-    eq_inj_df = pd.read_csv('assets/eq_inj_for_fig.csv')
+    try:
+        eq_inj_df = pd.read_csv('assets/eq_inj_for_fig.csv')
+    except:
+        eq_inj_df = pd.read_csv('/home/csmith/mysite/assets/eq_inj_for_fig.csv')
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -41,7 +44,10 @@ def eq_analysis_view(request, *args, **kwargs):
     graph_1 = fig.to_html(full_html=False, default_height=600, default_width=1000)
     # context = {'graph_1': graph_1}
 
-    eq_df = pd.read_csv('assets/eq_for_figs.csv')
+    try:
+        eq_df = pd.read_csv('assets/eq_for_figs.csv')
+    except:
+        eq_df = pd.read_csv('/home/csmith/mysite/assets/eq_for_figs.csv')
 
     eq_2006 = eq_df[eq_df["year"] == 2006]
     eq_2007 = eq_df[eq_df["year"] == 2007]

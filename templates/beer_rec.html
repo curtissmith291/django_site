@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+    
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Prevent "enter" key from being pressed -->
+    <script type="text/javascript">
+        window.addEventListener(
+            'keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+        </script>
+
+    <!-- bootstrap css -->
+    <!-- <script>href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/......."</script> -->
+
+	{% load static %}
+
+
+	<!-- Standard styles between all webpages -->
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <style>
+        .not-visible {
+            display: none;
+        }
+        .results-card {
+            background-color: whitesmoke;
+            width: 50%;
+            box-shadow: 0 8px 8px 0;
+            transition: 0.5s;
+            padding: 15px 15px;
+            align-items: center;
+            justify-content: center;
+        }
+        .item {
+            text-decoration: none;
+        }
+    </style>
+    <title>Beer Recommendations</title>
+</head>
+<body>
+
+    <br>
+
+    <h1 class="cs_header">
+        CURTIS S. SMITH, P.G.
+    </h1>
+    
+    <nav class="navbar navbar-expand-sm bg-transparent navbar-dark justify-content-center" id="just_font">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/projects">projects</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/blog">the blog</a>
+            </li> -->
+        </ul>
+    </nav>
+
+    <div class="container">
+        <hr class="footer_hr">
+    </div>
+
+    <div>
+        <script src="{% static 'main.js'%}" defer></script>
+    </div>
+
+    <div class="container">
+        <p class="left_text">
+            Search for a beer using the search bar below. Start tying to return matches in realtime - click on the 
+            desired entry and 10 beers will be recommended to you based on the results of a K-Means clustering 
+            algorith.             
+        </p>
+
+
+    <div class="container">
+        <div>
+        <div class="row" id="text">
+            <div class="col">
+                <!-- <form id="search-form" autocomplete="off" action="beer_rec_results"> -->
+                <form id="search-form" autocomplete="off">
+                    {% csrf_token %}
+                    <input type="text" id="search-input" class="p-1 w-50" placeholder="Search for a beer!", name="test_field" required>  
+                    <!-- <input type="submit" name="Click Me">  -->
+                </form>
+                <div id="results-box" class="results-card not-visible"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container">
+		<hr class="footer_hr">
+	</div>
+
+	<div class="container">
+		<h3 class='left_text'>
+			Project Description
+		</h3>
+		<p class='left_text'>
+			This web app is the result of the final project for the data analytics course. Initally, a dataset from Kaggle 
+            (<a href="https://www.kaggle.com/stephenpolozoff/top-beer-information">Beer Information - Tasting Profiles</a>)
+            was used for the model; however, after initial EDA (including a preliminary K-Means clustering algorithm), 
+            we determined that additional information could help with model 
+            accuracy. The Kaggle dataset initally contained approximately 5,500 beers scraped from 
+            <a href="https://www.beeradvocate.com/">BeerAdvocate</a>. The scraped entries contained counts of key words from 25 
+            reviews that were grouped into various 11 taste profiles (e.g., the "fruity" taste profile contained key words such as 
+            "berries, "fruit", "juice", and "tropical") to provide scrores for each beer. The flavor pofiles are: fruity, 
+            hoppy, spices, malty, bitter, sweet, sour, salty, astringent, body, and alcoholic. 
+			<br>
+            <br>
+            After communication with the Kaggle dataset uploader, they provided us (and uploaded it to the Kaggle page linked above) 
+            with the key words used to calculate each profile. We then created a web scraping script to scrape data from the  
+            <a href="https://www.beeradvocate.com/beer/top-styles/">top ranking beers from each substyle</a>
+            (e.g., "Stouts" contain the substyles "American" and "Irish Dry") that contained at least
+            75 reviews. We determined that more reviews would help differentiate the flavor profiles better for each beer and reduce 
+            clustering overlap.
+            <br>
+            <br>
+            After obtaining the newly scraped data, we re-ran the K-Means clustering algorithm and received better silhouette scores 
+            for each cluster, along recommended beers that felt more similar to the input beer. The dataset was testing using both 
+            the min/max scaler and standard scaler - both returned similar silhouette scores; however, the min/max returned a 
+            slightly higher score, so min/max was chosen for the final model. The data were then clustered into 3 main clusters (classes), then 
+            the main classes were then clustered into subclusters (subclasses), ranging from with each of the main clusters containing 7, 8, and 2 
+            subclasses, respectively. Figure 1 (interactive) displays the number of beers in each class and subclass. Figure 2 (also interactive) 
+            presents the distribution of beer ratings. 
+        </p>
+        <br>
+
+        <div class="centered_items">
+            {% if graph_1 %}
+            {{ graph_1|safe }}
+            {% else %}
+            <p>No graph was provided.</p>
+            {% endif %}
+        </div>
+        <p class='centered_text'>Figure 1: Sunburst chart displaying the number of beer in each class and subclass.</p>
+
+        <div class="centered_items">
+            {% if graph_2 %}
+            {{ graph_2|safe }}
+            {% else %}
+            <p>No graph was provided.</p>
+            {% endif %}
+        </div>
+        <p class='centered_text'>Figure 2: Histogram displaying distribution of beer ratings.</p>
+
+        
+        <br>
+        <p class='left_text'>
+            After modeling, a script was created that allowed a user to input a beer (contained within the dataset) and 10 
+            recommended beers would be returned. The recommended beers with be within the same class and subclass. Then, 
+            the flavor profile scores for the input score would be compared to the beers within the subclass and the beers with the 
+            smallest difference in scrores would be returned. Following that proof-of-concept, the code was refactored to operate 
+            within the Django framework - this allowed for easier use that did not require downloading code, and allowed for a 
+            "live-search" function so the user could, in real time, search for beers within the dataset. 
+            <br>
+            <br>
+            A Tableau storyboard displaying various metrics from data exploration and creation of the model can be found in the 
+            following link: 
+            <a href="https://public.tableau.com/app/profile/clayton.mack/viz/BeerModeling/Story3">Tableau Storyboard</a>
+            <br><br>
+            All of the code for the project is located on the following GitHub repository: 
+            <a href="https://github.com/curtissmith291/final_project"> GitHub Repository</a>
+        </p>
+    </div>
+
+    <div class="container">
+		<hr class="footer_hr">
+	</div>
+
+    <div class="container">
+		<p class='left_text'>
+            This project was a joint venture - links for the project members are listed below:
+            <ul>
+                <li class="left_text">
+                    Rodrick Spells
+                    <br>
+                    LinkedIn - <a href="http://linkedin.com/in/roderickspells">linkedin.com/in/roderickspells/</a>
+                    <br>
+                    GitHub - <a href="https://github.com/roderickspells">github.com/roderickspells</a>
+                </li>
+                <br>
+                <li class="left_text">
+                    Clayton Mack
+                    <br>
+                    LinkedIn - <a href="https://www.linkedin.com/in/clayton-mack-2328432a/">linkedin.com/in/clayton-mack-2328432a/</a>
+                    <br>
+                    GitHub - <a href="https://github.com/ClayMack">github.com/ClayMack</a>
+                </li>
+                <br>
+                <li class="left_text">
+                    Silpa Poudel
+                    <br>
+                    GitHub - <a href="https://github.com/silpapoudel">github.com/silpapoudel</a>
+                </li>
+            </ul>
+        </p>
+    </div>
+
+
+    <div class="container">
+        <hr class="footer_hr">
+
+        <div class="centered_text">
+            <p> 
+            <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">LinkedIn</a>
+                ||    
+            <a href="https://github.com/curtissmith291">GitHub</a>
+            </p>
+            <p>curtis.smith.geo@gmail.com</p>
+        </div>
+    </div>
+
+</body>
+</html>

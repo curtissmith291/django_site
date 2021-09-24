@@ -24,6 +24,7 @@ from chord_detector.views import chord_view, chord_result_view
 from chords_in_key.views import chords_in_key_error_view, chords_in_key_view, chords_in_key_result_view
 from ok_eq_map.views import ok_eq
 from eq_analysis.views import eq_analysis_view
+from beer_rec.views import main_view, beer_detail_view, search_results
 
 # Note: the "name" attribute is how the url is referenced
 urlpatterns = [
@@ -49,5 +50,9 @@ urlpatterns = [
     path('keychords/keychords_error', chords_in_key_error_view, name='chords_in_key_error'),
     path('oklahoma_earthquakes/', ok_eq, name='ok_eqs'),
     path('oklahoma_eq_analysis/', eq_analysis_view, name='eq_analysis'),
-    # path('blog/', blog_view, name='blog'),
+    path('beer_rec', main_view, name="beer_rec"),
+    path('beer_rec/search/', search_results, name='search'),
+    path('beer_rec<pk>/', beer_detail_view, name='beer_detail'),
+    # path('beer_rec_results/', beer_detail_view, name='beer_rec_results'),
+
 ]

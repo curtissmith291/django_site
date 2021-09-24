@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0">
@@ -16,20 +15,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200;400&display=swap" rel="stylesheet">
 
-    {% load static %}
+	{% load static %}
 
-    <!-- Standard styles between all webpages -->
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+	<!-- Standard styles between all webpages -->
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
 
     <style>
         
     </style>
-    
-    <title>Blog Post - Curtis Smith, P.G.</title>
-
+    <title>Beer Recommendations</title>
 </head>
-
-<body>    
+<body>
 
     <br>
 
@@ -42,10 +38,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/home">home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/projects">projects</a>
             </li>
-            <!-- <li class="nav-item active">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="/blog">the blog</a>
             </li> -->
         </ul>
@@ -55,41 +51,31 @@
         <hr class="footer_hr">
     </div>
 
-    <div class="container">
-        <h2 class= "left_text">{{ post.title }} </h2>
-        <p class = "left_text">By: {{ post.author.first_name }}
-            {{ post.author.last_name }}
-            <br>
-            {{ post.date }} CST
-        </p>
+    <div class="row">
+
+        <div class="container">
+            <p class='left_text'>
+                Working: {{working}}
+                <br>
+                Beer: {{input_beer}}
+            </p>
     </div>
 
-    <div class="container">
-        <hr class="footer_hr">
-    </div>
-  
-    <br>
 
-    <div class="container">
-        <div class = "left_text">
-        {{ post.body|safe }}
-        </div>
-    </div>
-
-    <br>
 
     <div class="container">
         <hr class="footer_hr">
 
         <div class="centered_text">
             <p> 
-            <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/curtis-smith-p-g-3676b785">linkedIn</a>
                 ||    
             <a href="https://github.com/curtissmith291">GitHub</a>
             </p>
             <p>curtis.smith.geo@gmail.com</p>
         </div>
     </div>
+
 
 </body>
 </html>

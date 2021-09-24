@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import json
 from pathlib import Path
+
+# uncomment out for deployment
+# with open('/etc/config.json') as config_file:
+#     config = json.load(config_file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-g=11^v)^d_u_*65x$w!*^*^26zobqq#9&%fti6&z0c@)44m3m('
 
+# uncomment out for deployment
+# SECRET_KEY = config['SECRET_KEY']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.curtisssmith.com', '45.79.1.66', '127.0.0.1']
 
 
 # Application definition
@@ -48,7 +56,8 @@ INSTALLED_APPS = [
     'chord_detector',
     'chords_in_key',
     'ok_eq_map',
-    'eq_analysis'
+    'eq_analysis',
+    'beer_rec',
 
 ]
 
@@ -131,6 +140,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/assets/'
+
+# uncomment out for deployment
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     BASE_DIR / "assets",'/images/',

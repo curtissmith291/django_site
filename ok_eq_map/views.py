@@ -4,18 +4,12 @@ from plotly.graph_objs import Scatter
 import plotly.graph_objects as go
 import pandas as pd
 
-# def ok_eq(request):
-#     x_data = [0,1,2,3]
-#     y_data = [x**2 for x in x_data]
-#     plot_div = plot([Scatter(x=x_data, y=y_data,
-#                         mode='lines', name='test',
-#                         opacity=0.8, marker_color='green')],
-#                output_type='div')
-#     return render(request, "ok_eq.html", context={'plot_div': plot_div})
-
 
 def ok_eq(request):
-    eq_df = pd.read_csv('assets/eq_for_figs.csv')
+    try:
+        eq_df = pd.read_csv('assets/eq_for_figs.csv')
+    except:
+        eq_df = pd.read_csv('/home/csmith/mysite/assets/eq_for_figs.csv')
 
     eq_2006 = eq_df[eq_df["year"] == 2006]
     eq_2007 = eq_df[eq_df["year"] == 2007]

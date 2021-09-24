@@ -50,6 +50,20 @@ body {
     color: whitesmoke;
 }
 
+.left_text_tab {
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Nunito', sans-serif;
+    color: whitesmoke;
+    text-indent: 40px;
+}
+
+.short_hr {
+    background-color: whitesmoke;
+    opacity: 0.7;
+    width: 50%;
+}
+
 /* Thumbnail images for LI and GH links */
 .thumb {
     width: 35px; 
